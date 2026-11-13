@@ -1,692 +1,1787 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#06141B">
-  <meta name="description" content="Pankaj Dhavale — aspiring Cloud Engineer focused on AWS, Linux, cloud infrastructure, and technical troubleshooting. Explore hands-on projects and skills.">
-  <meta property="og:title" content="Pankaj Dhavale | Cloud Engineering Portfolio">
-  <meta property="og:description" content="Hands-on AWS projects, Linux administration, cloud infrastructure, and technical troubleshooting.">
-  <meta property="og:type" content="website">
-  <title>Pankaj Dhavale | Cloud Engineer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      color-scheme: light;
-      --night: #06141B;
-      --deep: #11212D;
-      --blue-charcoal: #253745;
-      --slate: #4A5C6A;
-      --mist: #9BA8AB;
-      --stone: #CCD0CF;
-      --surface: #E2E6E5;
-      --surface-bright: #F0F2F1;
-      --white: #F7F8F7;
-      --text: #0B1A22;
-      --muted: #4C5B61;
-      --line: rgba(37, 55, 69, .16);
-      --shadow: 0 22px 60px rgba(6, 20, 27, .09);
-      --radius-lg: 28px;
-      --radius-md: 18px;
-      --max: 1160px;
-    }
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#06141B">
+    <meta name="description" content="Pankaj Dhavale — aspiring Cloud Engineer focused on AWS, Linux, cloud infrastructure, and technical troubleshooting. Explore hands-on projects and skills.">
+    <meta property="og:title" content="Pankaj Dhavale | Cloud Engineering Portfolio">
+    <meta property="og:description" content="Hands-on AWS projects, Linux administration, cloud infrastructure, and technical troubleshooting.">
+    <meta property="og:type" content="website">
+    <title>Pankaj Dhavale | Cloud Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: light;
+        --night: #06141B;
+        --deep: #11212D;
+        --blue-charcoal: #253745;
+        --slate: #4A5C6A;
+        --mist: #9BA8AB;
+        --stone: #CCD0CF;
+        --surface: #E2E6E5;
+        --surface-bright: #F0F2F1;
+        --white: #F7F8F7;
+        --text: #0B1A22;
+        --muted: #4C5B61;
+        --line: rgba(37, 55, 69, .16);
+        --shadow: 0 22px 60px rgba(6, 20, 27, .09);
+        --radius-lg: 28px;
+        --radius-md: 18px;
+        --max: 1160px;
+      }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
-    body {
-      margin: 0;
-      color: var(--text);
-      background: var(--stone);
-      font-family: "Manrope", "Segoe UI", Arial, sans-serif;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-    a { color: inherit; }
-    a:focus-visible, button:focus-visible { outline: 3px solid var(--slate); outline-offset: 4px; }
-    ::selection { color: var(--white); background: var(--slate); }
-    .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
-    .mono { font-family: "DM Mono", ui-monospace, SFMono-Regular, Consolas, monospace; }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+      body {
+        margin: 0;
+        color: var(--text);
+        background: var(--stone);
+        font-family: "Manrope", "Segoe UI", Arial, sans-serif;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      a { color: inherit; }
+      a:focus-visible, button:focus-visible { outline: 3px solid var(--slate); outline-offset: 4px; }
+      ::selection { color: var(--white); background: var(--slate); }
+      .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+      .mono { font-family: "DM Mono", ui-monospace, SFMono-Regular, Consolas, monospace; }
 
-    /* Navigation */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      color: var(--white);
-      background: rgba(6, 20, 27, .94);
-      border-bottom: 1px solid rgba(204, 208, 207, .12);
-      backdrop-filter: blur(18px);
-    }
-    .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
-    .brand { display: flex; align-items: center; gap: 14px; min-width: 0; text-decoration: none; }
-    .brand-rule { width: 3px; height: 34px; flex: 0 0 3px; border-radius: 10px; background: linear-gradient(180deg, var(--mist), var(--slate)); }
-    .brand-copy { display: grid; gap: 1px; }
-    .brand-name { color: var(--white); font-size: .98rem; font-weight: 800; letter-spacing: -.035em; line-height: 1.3; }
-    .brand-caption { color: var(--mist); font-family: "DM Mono", monospace; font-size: .61rem; letter-spacing: .14em; text-transform: uppercase; }
-    .nav-links { display: flex; align-items: center; gap: clamp(16px, 2.3vw, 29px); }
-    .nav-links a { color: #C1C9C9; font-size: .83rem; font-weight: 700; text-decoration: none; transition: color .2s ease; }
-    .nav-links a:hover { color: var(--white); }
-    .nav-links .nav-cta { padding: 10px 17px; color: var(--white); border: 1px solid rgba(155, 168, 171, .45); border-radius: 999px; }
-    .nav-links .nav-cta:hover { background: rgba(155, 168, 171, .14); }
-    .menu-toggle { display: none; padding: 9px 13px; color: var(--white); background: transparent; border: 1px solid rgba(155, 168, 171, .4); border-radius: 10px; font: inherit; font-size: .85rem; font-weight: 700; }
+      /* Navigation */
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        color: var(--white);
+        background: rgba(6, 20, 27, .94);
+        border-bottom: 1px solid rgba(204, 208, 207, .12);
+        backdrop-filter: blur(18px);
+      }
+      .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+      .brand { display: flex; align-items: center; gap: 14px; min-width: 0; text-decoration: none; }
+      .brand-rule { width: 3px; height: 34px; flex: 0 0 3px; border-radius: 10px; background: linear-gradient(180deg, var(--mist), var(--slate)); }
+      .brand-copy { display: grid; gap: 1px; }
+      .brand-name { color: var(--white); font-size: .98rem; font-weight: 800; letter-spacing: -.035em; line-height: 1.3; }
+      .brand-caption { color: var(--mist); font-family: "DM Mono", monospace; font-size: .61rem; letter-spacing: .14em; text-transform: uppercase; }
+      .nav-links { display: flex; align-items: center; gap: clamp(16px, 2.3vw, 29px); }
+      .nav-links a { color: #C1C9C9; font-size: .83rem; font-weight: 700; text-decoration: none; transition: color .2s ease; }
+      .nav-links a:hover { color: var(--white); }
+      .nav-links .nav-cta { padding: 10px 17px; color: var(--white); border: 1px solid rgba(155, 168, 171, .45); border-radius: 999px; }
+      .nav-links .nav-cta:hover { background: rgba(155, 168, 171, .14); }
+      .menu-toggle { display: none; padding: 9px 13px; color: var(--white); background: transparent; border: 1px solid rgba(155, 168, 171, .4); border-radius: 10px; font: inherit; font-size: .85rem; font-weight: 700; }
 
-    /* Hero */
-    .hero {
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-      color: var(--white);
-      background:
+      /* Hero */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        color: var(--white);
+        background:
         radial-gradient(ellipse at 78% 18%, rgba(74, 92, 106, .36), transparent 34%),
         radial-gradient(ellipse at 12% 100%, rgba(37, 55, 69, .72), transparent 46%),
         linear-gradient(128deg, var(--night) 0%, var(--deep) 58%, var(--blue-charcoal) 100%);
-      padding: clamp(58px, 7vw, 88px) 0 68px;
-    }
-    .hero::before {
-      position: absolute;
-      z-index: -1;
-      inset: 0;
-      content: "";
-      opacity: .2;
-      background-image: linear-gradient(rgba(204,208,207,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(204,208,207,.10) 1px, transparent 1px);
-      background-size: 58px 58px;
-      mask-image: linear-gradient(90deg, transparent, #000 52%, transparent);
-    }
-    .hero::after {
-      position: absolute;
-      z-index: -1;
-      content: "";
-      width: 560px;
-      height: 560px;
-      right: -190px;
-      top: -310px;
-      border: 1px solid rgba(204,208,207,.14);
-      border-radius: 50%;
-      box-shadow: 0 0 0 48px rgba(204,208,207,.025), 0 0 0 96px rgba(204,208,207,.02), 0 0 0 144px rgba(204,208,207,.015);
-    }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr); align-items: center; gap: clamp(30px, 5vw, 64px); }
-    .eyebrow, .section-kicker, .mini-label { font-family: "DM Mono", monospace; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--mist); }
-    .eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--mist); }
-    h1 { max-width: 780px; margin: 18px 0 16px; font-size: clamp(3.3rem, 7.5vw, 6.3rem); line-height: .99; letter-spacing: -.085em; font-weight: 800; }
-    h1 span { display: block; color: var(--mist); }
-    .hero-lede { max-width: 650px; margin: 0; color: #D0D6D5; font-size: clamp(1rem, 1.7vw, 1.15rem); line-height: 1.85; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 13px 19px; border: 1px solid transparent; border-radius: 9px; font-size: .86rem; font-weight: 800; text-decoration: none; transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease; }
-    .button:hover { transform: translateY(-2px); }
-    .button-primary { color: var(--night); background: var(--stone); box-shadow: 0 10px 25px rgba(0,0,0,.15); }
-    .button-primary:hover { background: var(--white); }
-    .button-secondary { color: var(--white); border-color: rgba(204,208,207,.42); background: rgba(204,208,207,.06); }
-    .button-secondary:hover { background: rgba(204,208,207,.13); border-color: var(--mist); }
-    .hero-note { display: flex; align-items: center; gap: 10px; margin-top: 20px; color: var(--mist); font-size: .76rem; font-weight: 600; }
-    .hero-note::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #9BA8AB; box-shadow: 0 0 0 5px rgba(155,168,171,.12); }
-    .hero-panel { position: relative; padding: 22px; border: 1px solid rgba(204,208,207,.19); border-radius: var(--radius-lg); background: linear-gradient(145deg, rgba(37,55,69,.75), rgba(17,33,45,.72)); box-shadow: 0 28px 80px rgba(0,0,0,.22); backdrop-filter: blur(14px); }
-    .hero-panel::before { position: absolute; content: ""; top: -1px; left: 27px; right: 27px; height: 1px; background: linear-gradient(90deg, transparent, rgba(204,208,207,.55), transparent); }
-    .panel-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 18px; border-bottom: 1px solid rgba(204,208,207,.14); }
-    .panel-top .mini-label { color: var(--mist); font-size: .64rem; }
-    .availability { display: inline-flex; align-items: center; gap: 7px; color: #D7DEDC; font-size: .7rem; font-weight: 700; }
-    .availability::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #9BA8AB; }
-    .hero-stat { padding: 14px 0; border-bottom: 1px solid rgba(204,208,207,.12); }
-    .hero-stat:last-of-type { border-bottom: 0; padding-bottom: 7px; }
-    .hero-stat strong { display: block; color: var(--white); font-size: 1.08rem; letter-spacing: -.035em; }
-    .hero-stat span { display: block; margin-top: 3px; color: #B7C0C1; font-size: .8rem; }
-    .hero-stack { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
-    .hero-stack span { padding: 6px 9px; color: #D7DEDC; border: 1px solid rgba(204,208,207,.18); border-radius: 6px; background: rgba(6,20,27,.25); font-family: "DM Mono", monospace; font-size: .65rem; }
+        padding: clamp(58px, 7vw, 88px) 0 68px;
+      }
+      .hero::before {
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        content: "";
+        opacity: .2;
+        background-image: linear-gradient(rgba(204,208,207,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(204,208,207,.10) 1px, transparent 1px);
+        background-size: 58px 58px;
+        mask-image: linear-gradient(90deg, transparent, #000 52%, transparent);
+      }
+      .hero::after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        width: 560px;
+        height: 560px;
+        right: -190px;
+        top: -310px;
+        border: 1px solid rgba(204,208,207,.14);
+        border-radius: 50%;
+        box-shadow: 0 0 0 48px rgba(204,208,207,.025), 0 0 0 96px rgba(204,208,207,.02), 0 0 0 144px rgba(204,208,207,.015);
+      }
+      .hero-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr); align-items: center; gap: clamp(30px, 5vw, 64px); }
+      .eyebrow, .section-kicker, .mini-label { font-family: "DM Mono", monospace; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; }
+      .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--mist); }
+      .eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--mist); }
+      h1 { max-width: 780px; margin: 18px 0 16px; font-size: clamp(3.3rem, 7.5vw, 6.3rem); line-height: .99; letter-spacing: -.085em; font-weight: 800; }
+      h1 span { display: block; color: var(--mist); }
+      .hero-lede { max-width: 650px; margin: 0; color: #D0D6D5; font-size: clamp(1rem, 1.7vw, 1.15rem); line-height: 1.85; }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+      .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 13px 19px; border: 1px solid transparent; border-radius: 9px; font-size: .86rem; font-weight: 800; text-decoration: none; transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease; }
+      .button:hover { transform: translateY(-2px); }
+      .button span[aria-hidden="true"] {
+        display: inline-block;
+        transition: transform .2s ease;
+      }
+      .button:hover span[aria-hidden="true"] { transform: translate(3px, -1px); }
+      .button:active,
+      .project-carousel-button:active,
+      .menu-toggle:active {
+        transform: translateY(0) scale(.98);
+      }
+      .menu-toggle {
+        transition: background .2s ease, border-color .2s ease, transform .2s ease;
+      }
+      .menu-toggle:hover {
+        border-color: rgba(155,168,171,.7);
+        background: rgba(155,168,171,.1);
+      }
+      .button-primary { color: var(--night); background: var(--stone); box-shadow: 0 10px 25px rgba(0,0,0,.15); }
+      .button-primary:hover { background: var(--white); }
+      .button-secondary { color: var(--white); border-color: rgba(204,208,207,.42); background: rgba(204,208,207,.06); }
+      .button-secondary:hover { background: rgba(204,208,207,.13); border-color: var(--mist); }
+      .hero-note { display: flex; align-items: center; gap: 10px; margin-top: 20px; color: var(--mist); font-size: .76rem; font-weight: 600; }
+      .hero-note::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #9BA8AB; box-shadow: 0 0 0 5px rgba(155,168,171,.12); }
+      .hero-panel { position: relative; padding: 22px; border: 1px solid rgba(204,208,207,.19); border-radius: var(--radius-lg); background: linear-gradient(145deg, rgba(37,55,69,.75), rgba(17,33,45,.72)); box-shadow: 0 28px 80px rgba(0,0,0,.22); backdrop-filter: blur(14px); }
+      .hero-panel::before { position: absolute; content: ""; top: -1px; left: 27px; right: 27px; height: 1px; background: linear-gradient(90deg, transparent, rgba(204,208,207,.55), transparent); }
+      .panel-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 18px; border-bottom: 1px solid rgba(204,208,207,.14); }
+      .panel-top .mini-label { color: var(--mist); font-size: .64rem; }
+      .availability { display: inline-flex; align-items: center; gap: 7px; color: #D7DEDC; font-size: .7rem; font-weight: 700; }
+      .availability::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #9BA8AB; }
+      .hero-stat { padding: 14px 0; border-bottom: 1px solid rgba(204,208,207,.12); }
+      .hero-stat:last-of-type { border-bottom: 0; padding-bottom: 7px; }
+      .hero-stat strong { display: block; color: var(--white); font-size: 1.08rem; letter-spacing: -.035em; }
+      .hero-stat span { display: block; margin-top: 3px; color: #B7C0C1; font-size: .8rem; }
+      .hero-stack { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+      .hero-stack span { padding: 6px 9px; color: #D7DEDC; border: 1px solid rgba(204,208,207,.18); border-radius: 6px; background: rgba(6,20,27,.25); font-family: "DM Mono", monospace; font-size: .65rem; }
 
-    /* Shared sections */
-    section.content-section { padding: clamp(48px, 5.5vw, 68px) 0; }
-    .section-head { max-width: 710px; margin-bottom: 25px; }
-    .section-kicker { color: var(--slate); font-size: .68rem; font-weight: 500; }
-    h2 { margin: 8px 0 10px; color: var(--night); font-size: clamp(2rem, 4.2vw, 3.2rem); line-height: 1.12; letter-spacing: -.065em; font-weight: 800; }
-    .section-intro { max-width: 660px; margin: 0; color: var(--muted); font-size: .98rem; line-height: 1.8; }
-    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; }
-    .surface-card { border: 1px solid rgba(37,55,69,.12); border-radius: var(--radius-md); background: rgba(240,242,241,.72); box-shadow: var(--shadow); }
-    .about-copy { padding: clamp(21px, 2.5vw, 28px); }
-    .about-copy p { margin: 0 0 11px; color: var(--muted); font-size: .94rem; }
-    .about-copy p:last-child { margin-bottom: 0; }
-    .approach-card { padding: clamp(21px, 2.5vw, 27px); }
-    .approach-card h3 { margin: 0 0 20px; color: var(--night); font-size: 1rem; letter-spacing: -.03em; }
-    .approach-list { display: grid; gap: 15px; }
-    .approach-item { display: grid; grid-template-columns: 34px 1fr; gap: 13px; align-items: start; }
-    .approach-number { color: var(--slate); font-family: "DM Mono", monospace; font-size: .75rem; }
-    .approach-item strong { display: block; color: var(--night); font-size: .88rem; }
-    .approach-item p { margin: 3px 0 0; color: var(--muted); font-size: .81rem; line-height: 1.65; }
+      /* Shared sections */
+      section.content-section { padding: clamp(48px, 5.5vw, 68px) 0; }
+      .section-head { max-width: 710px; margin-bottom: 25px; }
+      .section-kicker { color: var(--slate); font-size: .68rem; font-weight: 500; }
+      h2 { margin: 8px 0 10px; color: var(--night); font-size: clamp(2rem, 4.2vw, 3.2rem); line-height: 1.12; letter-spacing: -.065em; font-weight: 800; }
+      .section-intro { max-width: 660px; margin: 0; color: var(--muted); font-size: .98rem; line-height: 1.8; }
+      .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; }
+      .surface-card { border: 1px solid rgba(37,55,69,.12); border-radius: var(--radius-md); background: rgba(240,242,241,.72); box-shadow: var(--shadow); }
+      .about-copy { padding: clamp(21px, 2.5vw, 28px); }
+      .about-copy p { margin: 0 0 11px; color: var(--muted); font-size: .94rem; }
+      .about-copy p:last-child { margin-bottom: 0; }
+      .approach-card { padding: clamp(21px, 2.5vw, 27px); }
+      .approach-card h3 { margin: 0 0 20px; color: var(--night); font-size: 1rem; letter-spacing: -.03em; }
+      .approach-list { display: grid; gap: 15px; }
+      .approach-item { display: grid; grid-template-columns: 34px 1fr; gap: 13px; align-items: start; }
+      .approach-number { color: var(--slate); font-family: "DM Mono", monospace; font-size: .75rem; }
+      .approach-item strong { display: block; color: var(--night); font-size: .88rem; }
+      .approach-item p { margin: 3px 0 0; color: var(--muted); font-size: .81rem; line-height: 1.65; }
 
-    /* Skills */
-    .skills-section { background: var(--surface); border-block: 1px solid rgba(37,55,69,.08); }
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .skill-card { min-height: 158px; padding: 20px; border: 1px solid rgba(37,55,69,.13); border-radius: 15px; background: var(--surface-bright); transition: transform .22s ease, box-shadow .22s ease; }
-    .skill-card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(6,20,27,.08); }
-    .skill-index { color: var(--slate); font-family: "DM Mono", monospace; font-size: .66rem; }
-    .skill-card h3 { margin: 9px 0 14px; color: var(--night); font-size: 1rem; letter-spacing: -.035em; }
-    .skill-pills { display: flex; flex-wrap: wrap; gap: 7px; }
-    .skill-pills span { padding: 5px 8px; color: #344650; border: 1px solid rgba(74,92,106,.18); border-radius: 5px; background: #E7EAE9; font-size: .7rem; font-weight: 700; }
+      /* Skills */
+      .skills-section { background: var(--surface); border-block: 1px solid rgba(37,55,69,.08); }
+      .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .skill-card { min-height: 158px; padding: 20px; border: 1px solid rgba(37,55,69,.13); border-radius: 15px; background: var(--surface-bright); transition: transform .22s ease, box-shadow .22s ease; }
+      .skill-card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(6,20,27,.08); }
+      .skill-index { color: var(--slate); font-family: "DM Mono", monospace; font-size: .66rem; }
+      .skill-card h3 { margin: 9px 0 14px; color: var(--night); font-size: 1rem; letter-spacing: -.035em; }
+      .skill-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+      .skill-pills span { padding: 5px 8px; color: #344650; border: 1px solid rgba(74,92,106,.18); border-radius: 5px; background: #E7EAE9; font-size: .7rem; font-weight: 700; }
 
-    /* Featured project */
-    .project-shell { overflow: hidden; border: 1px solid rgba(37,55,69,.15); border-radius: var(--radius-lg); background: var(--surface-bright); box-shadow: var(--shadow); }
-    .project-header { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 17px 23px; border-bottom: 1px solid rgba(37,55,69,.12); background: #D8DEDD; }
-    .project-label { display: flex; align-items: center; gap: 10px; color: var(--slate); font-family: "DM Mono", monospace; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
-    .project-check { display: grid; place-items: center; width: 25px; height: 25px; color: var(--white); border-radius: 50%; background: var(--slate); font-size: .78rem; }
-    .project-status { padding: 6px 10px; color: #263A45; border: 1px solid rgba(74,92,106,.2); border-radius: 5px; background: rgba(204,208,207,.64); font-size: .69rem; font-weight: 800; }
-    .project-body { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 22px; padding: clamp(21px, 3vw, 30px); }
-    .project-copy h3 { margin: 0 0 11px; color: var(--night); font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -.055em; }
-    .project-copy > p { margin: 0 0 19px; color: var(--muted); font-size: .9rem; }
-    .project-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
-    .project-list li { position: relative; padding-left: 20px; color: #43535A; font-size: .82rem; line-height: 1.65; }
-    .project-list li::before { position: absolute; left: 0; top: .1em; color: var(--slate); content: "↳"; font-weight: 800; }
-    .tech-line { margin-top: 16px; padding-top: 13px; border-top: 1px solid rgba(37,55,69,.13); }
-    .tech-line strong { display: block; margin-bottom: 9px; color: var(--slate); font-family: "DM Mono", monospace; font-size: .65rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
-    .tech-line div { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tech-line span { padding: 5px 8px; color: var(--white); border-radius: 5px; background: var(--blue-charcoal); font-size: .67rem; font-weight: 700; }
-    .project-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
-    .project-actions .button { min-height: 42px; padding: 10px 14px; font-size: .76rem; }
-    .button-dark { color: var(--white); background: var(--night); }
-    .button-dark:hover { background: var(--blue-charcoal); }
-    .button-light { color: var(--night); border-color: rgba(37,55,69,.24); background: transparent; }
-    .button-light:hover { background: #D8DEDD; }
-    .architecture { align-self: stretch; min-width: 0; padding: 18px; color: var(--white); border: 1px solid rgba(204,208,207,.13); border-radius: 17px; background: linear-gradient(150deg, var(--deep), var(--night)); }
-    .architecture-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 17px; padding-bottom: 13px; border-bottom: 1px solid rgba(204,208,207,.15); }
-    .architecture-head strong { color: var(--white); font-size: .85rem; }
-    .architecture-head span { color: var(--mist); font-family: "DM Mono", monospace; font-size: .62rem; }
-    .arch-flow { display: grid; gap: 9px; }
-    .arch-row { display: grid; grid-template-columns: minmax(0,1fr) 22px minmax(0,1fr); gap: 7px; align-items: center; }
-    .arch-node { min-height: 65px; display: flex; flex-direction: column; justify-content: center; padding: 9px 11px; border: 1px solid rgba(155,168,171,.28); border-radius: 9px; background: rgba(37,55,69,.66); }
-    .arch-node b { color: #E7EBEA; font-size: .72rem; }
-    .arch-node small { margin-top: 3px; color: #B4BEC0; font-size: .63rem; line-height: 1.4; }
-    .arch-arrow { color: var(--mist); text-align: center; font-size: 1rem; }
-    .arch-config { margin-top: 11px; padding: 10px 11px; color: #D0D7D7; border: 1px dashed rgba(155,168,171,.3); border-radius: 8px; background: rgba(6,20,27,.35); font-size: .66rem; line-height: 1.6; }
-    .arch-config strong { color: var(--white); }
-    .arch-config code { color: #D0D7D7; font-family: "DM Mono", monospace; font-size: .65rem; }
-    .arch-note { margin: 10px 0 0; color: #AEBABC; font-size: .63rem; line-height: 1.55; }
-    .project-footnote { margin: 0; padding: 11px 23px; color: #526067; border-top: 1px solid rgba(37,55,69,.12); background: #D8DEDD; font-size: .73rem; }
-    .project-footnote strong { color: var(--night); }
-    /* Project Screenshot Gallery */
-.project-gallery {
-    padding: 0 clamp(24px, 3.5vw, 38px) 28px;
-}
+      /* Featured project */
+      .project-shell {
+        overflow: hidden;
+        border: 1px solid rgba(37,55,69,.15);
+        border-radius: var(--radius-lg);
+        background: var(--surface-bright);
+        box-shadow: var(--shadow);
+        transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+      }
+      @media (hover: hover) and (pointer: fine) {
+        .project-shell:hover {
+          transform: translateY(-3px);
+          border-color: rgba(37,55,69,.28);
+          box-shadow: 0 26px 64px rgba(6,20,27,.13);
+        }
+        .project-shot:hover {
+          border-color: rgba(37,55,69,.3);
+          box-shadow: 0 10px 24px rgba(6,20,27,.1);
+        }
+      }
+      .project-header { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 17px 23px; border-bottom: 1px solid rgba(37,55,69,.12); background: #D8DEDD; }
+      .project-label { display: flex; align-items: center; gap: 10px; color: var(--slate); font-family: "DM Mono", monospace; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+      .project-check { display: grid; place-items: center; width: 25px; height: 25px; color: var(--white); border-radius: 50%; background: var(--slate); font-size: .78rem; }
+      .project-status { padding: 6px 10px; color: #263A45; border: 1px solid rgba(74,92,106,.2); border-radius: 5px; background: rgba(204,208,207,.64); font-size: .69rem; font-weight: 800; }
+      .project-body { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 22px; padding: clamp(21px, 3vw, 30px); }
+      .project-copy h3 { margin: 0 0 11px; color: var(--night); font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -.055em; }
+      .project-copy > p { margin: 0 0 19px; color: var(--muted); font-size: .9rem; }
+      .project-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+      .project-list li { position: relative; padding-left: 20px; color: #43535A; font-size: .82rem; line-height: 1.65; }
+      .project-list li::before { position: absolute; left: 0; top: .1em; color: var(--slate); content: "↳"; font-weight: 800; }
+      .tech-line { margin-top: 16px; padding-top: 13px; border-top: 1px solid rgba(37,55,69,.13); }
+      .tech-line strong { display: block; margin-bottom: 9px; color: var(--slate); font-family: "DM Mono", monospace; font-size: .65rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
+      .tech-line div { display: flex; flex-wrap: wrap; gap: 6px; }
+      .tech-line span { padding: 5px 8px; color: var(--white); border-radius: 5px; background: var(--blue-charcoal); font-size: .67rem; font-weight: 700; }
+      .project-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+      .project-actions .button { min-height: 42px; padding: 10px 14px; font-size: .76rem; }
+      .button-dark { color: var(--white); background: var(--night); }
+      .button-dark:hover { background: var(--blue-charcoal); }
+      .button-light { color: var(--night); border-color: rgba(37,55,69,.24); background: transparent; }
+      .button-light:hover { background: #D8DEDD; }
+      .architecture { align-self: stretch; min-width: 0; padding: 18px; color: var(--white); border: 1px solid rgba(204,208,207,.13); border-radius: 17px; background: linear-gradient(150deg, var(--deep), var(--night)); }
+      .architecture-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 17px; padding-bottom: 13px; border-bottom: 1px solid rgba(204,208,207,.15); }
+      .architecture-head strong { color: var(--white); font-size: .85rem; }
+      .architecture-head span { color: var(--mist); font-family: "DM Mono", monospace; font-size: .62rem; }
+      .arch-flow { display: grid; gap: 9px; }
+      .arch-row { display: grid; grid-template-columns: minmax(0,1fr) 22px minmax(0,1fr); gap: 7px; align-items: center; }
+      .arch-node { min-height: 65px; display: flex; flex-direction: column; justify-content: center; padding: 9px 11px; border: 1px solid rgba(155,168,171,.28); border-radius: 9px; background: rgba(37,55,69,.66); }
+      .arch-node b { color: #E7EBEA; font-size: .72rem; }
+      .arch-node small { margin-top: 3px; color: #B4BEC0; font-size: .63rem; line-height: 1.4; }
+      .arch-arrow { color: var(--mist); text-align: center; font-size: 1rem; }
+      .arch-config { margin-top: 11px; padding: 10px 11px; color: #D0D7D7; border: 1px dashed rgba(155,168,171,.3); border-radius: 8px; background: rgba(6,20,27,.35); font-size: .66rem; line-height: 1.6; }
+      .arch-config strong { color: var(--white); }
+      .arch-config code { color: #D0D7D7; font-family: "DM Mono", monospace; font-size: .65rem; }
+      .arch-note { margin: 10px 0 0; color: #AEBABC; font-size: .63rem; line-height: 1.55; }
+      .project-footnote { margin: 0; padding: 11px 23px; color: #526067; border-top: 1px solid rgba(37,55,69,.12); background: #D8DEDD; font-size: .73rem; }
+      .project-footnote strong { color: var(--night); }
+      /* Project carousel */
+      .project-carousel { position: relative; }
+      .project-carousel-controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        margin: 0 0 14px;
+      }
+      .project-carousel-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 40px;
+        padding: 9px 14px;
+        color: var(--night);
+        border: 1px solid rgba(37,55,69,.22);
+        border-radius: 9px;
+        background: rgba(240,242,241,.82);
+        font: inherit;
+        font-size: .78rem;
+        font-weight: 800;
+        cursor: pointer;
+        transition: background .2s ease, transform .2s ease, border-color .2s ease;
+      }
+      .project-carousel-button:hover {
+        transform: translateY(-1px);
+        border-color: rgba(37,55,69,.42);
+        background: var(--white);
+      }
+      .project-carousel-button:focus-visible {
+        outline: 3px solid var(--slate);
+        outline-offset: 3px;
+      }
+      .project-carousel-status {
+        color: var(--slate);
+        font-family: "DM Mono", monospace;
+        font-size: .7rem;
+        letter-spacing: .08em;
+        text-align: center;
+      }
+      .project-carousel-viewport {
+        overflow: hidden;
+        border-radius: var(--radius-lg);
+        touch-action: pan-y;
+        overscroll-behavior-x: contain;
+        cursor: grab;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .project-carousel-viewport.is-dragging {
+        cursor: grabbing;
+      }
+      .project-carousel-viewport.is-dragging .project-carousel-track {
+        transition: none;
+      }
+      .project-carousel-viewport:focus-visible {
+        outline: 3px solid var(--slate);
+        outline-offset: 4px;
+      }
+      .project-carousel-track {
+        display: flex;
+        align-items: stretch;
+        transition: transform .42s cubic-bezier(.22,.75,.25,1);
+        will-change: transform;
+      }
+      .project-carousel-slide {
+        flex: 0 0 100%;
+        width: 100%;
+        min-width: 0;
+      }
 
-.gallery-heading {
-    margin-bottom: 16px;
-}
+      /* Project Screenshot Gallery */
+      .project-gallery {
+        padding: 0 clamp(24px, 3.5vw, 38px) 28px;
+      }
 
-.gallery-heading h3 {
-    margin: 0 0 4px;
-    color: var(--night);
-    font-size: 1.1rem;
-}
+      .gallery-heading {
+        margin-bottom: 16px;
+      }
 
-.gallery-heading p {
-    margin: 0;
-    color: var(--muted);
-    font-size: .82rem;
-}
+      .gallery-heading h3 {
+        margin: 0 0 4px;
+        color: var(--night);
+        font-size: 1.1rem;
+      }
 
-.project-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-}
+      .gallery-heading p {
+        margin: 0;
+        color: var(--muted);
+        font-size: .82rem;
+      }
 
-.project-shot {
-    margin: 0;
-    overflow: hidden;
-    border: 1px solid rgba(37, 55, 69, .14);
-    border-radius: 12px;
-    background: #E7EAE9;
-}
+      .project-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
 
-.project-shot a {
-    display: block;
-}
+      .project-shot {
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid rgba(37, 55, 69, .14);
+        border-radius: 12px;
+        background: #E7EAE9;
+      }
 
-.project-shot img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    transition: transform .25s ease;
-}
+      .project-shot a {
+        display: block;
+      }
 
-.project-shot a:hover img {
-    transform: scale(1.03);
-}
+      .project-shot img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        transition: transform .25s ease;
+      }
 
-.project-shot figcaption {
-    padding: 10px 12px;
-    color: #43535A;
-    font-size: .75rem;
-    font-weight: 700;
-}
+      .project-shot a:hover img {
+        transform: scale(1.03);
+      }
 
-/* Tablet */
-@media (max-width: 720px) {
-    .project-gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
+      .project-shot figcaption {
+        padding: 10px 12px;
+        color: #43535A;
+        font-size: .75rem;
+        font-weight: 700;
+      }
 
-/* Mobile */
-@media (max-width: 460px) {
-    .project-gallery-grid {
-        grid-template-columns: 1fr;
-    }
-}
+      /* Tablet */
+      @media (max-width: 720px) {
+        .project-gallery-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
 
-/* Experience and contact */
-    .experience-section { background: var(--surface); border-block: 1px solid rgba(37,55,69,.08); }
-    .experience-card { display: grid; grid-template-columns: 1fr auto; gap: 18px; padding: 22px 24px; border: 1px solid rgba(37,55,69,.14); border-radius: 16px; background: var(--surface-bright); }
-    .experience-card h3 { margin: 0 0 4px; color: var(--night); font-size: 1.06rem; letter-spacing: -.03em; }
-    .experience-company { color: var(--slate); font-size: .85rem; font-weight: 800; }
-    .experience-card p { max-width: 760px; margin: 11px 0 0; color: var(--muted); font-size: .85rem; }
-    .experience-date { color: #52616A; font-family: "DM Mono", monospace; font-size: .69rem; white-space: nowrap; }
-    .contact { position: relative; overflow: hidden; padding: clamp(48px, 6vw, 68px) 0; color: var(--white); background: radial-gradient(ellipse at 82% 20%, rgba(74,92,106,.35), transparent 36%), linear-gradient(120deg, var(--night), var(--deep) 70%, var(--blue-charcoal)); }
-    .contact-inner { display: block; }
-    .contact .section-kicker { color: var(--mist); }
-    .contact h2 { margin: 10px 0 12px; color: var(--white); }
-    .contact p { max-width: 680px; margin: 0; color: #C1C9C9; font-size: .91rem; }
-    .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 22px; }
-    .contact-card { display: flex; flex-direction: column; min-width: 0; gap: 4px; padding: 14px 16px; color: var(--white); text-decoration: none; border: 1px solid rgba(204,208,207,.2); border-radius: 12px; background: linear-gradient(145deg, rgba(37,55,69,.78), rgba(17,33,45,.78)); transition: transform .2s ease, border-color .2s ease, background .2s ease; }
-    .contact-card:hover { transform: translateY(-2px); border-color: rgba(155,168,171,.65); background: linear-gradient(145deg, rgba(74,92,106,.72), rgba(37,55,69,.86)); }
-    .contact-card-label { color: var(--mist); font-family: "DM Mono", monospace; font-size: .64rem; letter-spacing: .13em; text-transform: uppercase; }
-    .contact-card strong { overflow-wrap: anywhere; color: var(--white); font-size: .91rem; font-weight: 700; }
-    .contact-card small { color: #B9C3C4; font-size: .72rem; }
-    .contact-location { display: inline-flex; align-items: center; gap: 9px; margin-top: 14px; color: #C1C9C9; font-size: .78rem; }
-    .contact-location::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--mist); box-shadow: 0 0 0 5px rgba(155,168,171,.12); }
-    footer { padding: 18px 0; color: #AEBABC; background: var(--night); border-top: 1px solid rgba(204,208,207,.1); }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; font-size: .72rem; }
-    .footer-inner a { color: #D1D8D7; text-decoration: none; }
-    .footer-inner a:hover { color: var(--white); }
+      /* Mobile */
+      @media (max-width: 460px) {
+        .project-gallery-grid {
+          grid-template-columns: 1fr;
+        }
+      }
 
-    /* Resume */
-    .resume-section { background: #E8ECEB; border-block: 1px solid rgba(37,55,69,.08); }
-    .resume-card { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 24px; padding: clamp(20px, 2.5vw, 27px); border: 1px solid rgba(155,168,171,.34); border-radius: var(--radius-md); background: linear-gradient(130deg, var(--blue-charcoal), var(--deep)); box-shadow: 0 22px 50px rgba(6,20,27,.16); }
-    .resume-card-main { display: flex; align-items: flex-start; gap: 16px; min-width: 0; }
-    .resume-icon { display: grid; place-items: center; width: 52px; height: 58px; flex: 0 0 52px; color: var(--stone); border: 1px solid rgba(204,208,207,.18); border-radius: 10px; background: rgba(6,20,27,.5); }
-    .resume-icon svg { width: 25px; height: 25px; }
-    .resume-card h3 { margin: 0 0 5px; color: var(--white); font-size: 1.06rem; }
-    .resume-card p { margin: 0; color: #D2D9D8; font-size: .8rem; }
-    .resume-meta { margin-top: 8px; color: var(--mist); font-family: "DM Mono", monospace; font-size: .62rem; letter-spacing: .04em; }
-    .resume-actions { display: flex; flex-wrap: wrap; gap: 8px; }
-    .resume-actions .button-dark { color: var(--night); background: var(--stone); }
-    .resume-actions .button-dark:hover { background: var(--white); }
-    .resume-actions .button-light { color: var(--white); border-color: rgba(204,208,207,.42); background: rgba(204,208,207,.05); }
-    .resume-actions .button-light:hover { background: rgba(204,208,207,.13); border-color: var(--mist); }
+      /* Experience and contact */
+      .experience-section { background: var(--surface); border-block: 1px solid rgba(37,55,69,.08); }
+      .experience-card { display: grid; grid-template-columns: 1fr auto; gap: 18px; padding: 22px 24px; border: 1px solid rgba(37,55,69,.14); border-radius: 16px; background: var(--surface-bright); }
+      .experience-card h3 { margin: 0 0 4px; color: var(--night); font-size: 1.06rem; letter-spacing: -.03em; }
+      .experience-company { color: var(--slate); font-size: .85rem; font-weight: 800; }
+      .experience-card p { max-width: 760px; margin: 11px 0 0; color: var(--muted); font-size: .85rem; }
+      .experience-date { color: #52616A; font-family: "DM Mono", monospace; font-size: .69rem; white-space: nowrap; }
+      .contact { position: relative; overflow: hidden; padding: clamp(48px, 6vw, 68px) 0; color: var(--white); background: radial-gradient(ellipse at 82% 20%, rgba(74,92,106,.35), transparent 36%), linear-gradient(120deg, var(--night), var(--deep) 70%, var(--blue-charcoal)); }
+      .contact-inner { display: block; }
+      .contact .section-kicker { color: var(--mist); }
+      .contact h2 { margin: 10px 0 12px; color: var(--white); }
+      .contact p { max-width: 680px; margin: 0; color: #C1C9C9; font-size: .91rem; }
+      .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 22px; }
+      .contact-card { display: flex; flex-direction: column; min-width: 0; gap: 4px; padding: 14px 16px; color: var(--white); text-decoration: none; border: 1px solid rgba(204,208,207,.2); border-radius: 12px; background: linear-gradient(145deg, rgba(37,55,69,.78), rgba(17,33,45,.78)); transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+      .contact-card:hover { transform: translateY(-2px); border-color: rgba(155,168,171,.65); background: linear-gradient(145deg, rgba(74,92,106,.72), rgba(37,55,69,.86)); }
+      .contact-card-label { color: var(--mist); font-family: "DM Mono", monospace; font-size: .64rem; letter-spacing: .13em; text-transform: uppercase; }
+      .contact-card strong { overflow-wrap: anywhere; color: var(--white); font-size: .91rem; font-weight: 700; }
+      .contact-card small { color: #B9C3C4; font-size: .72rem; }
+      .contact-location { display: inline-flex; align-items: center; gap: 9px; margin-top: 14px; color: #C1C9C9; font-size: .78rem; }
+      .contact-location::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--mist); box-shadow: 0 0 0 5px rgba(155,168,171,.12); }
+      footer { padding: 18px 0; color: #AEBABC; background: var(--night); border-top: 1px solid rgba(204,208,207,.1); }
+      .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; font-size: .72rem; }
+      .footer-inner a { color: #D1D8D7; text-decoration: none; }
+      .footer-inner a:hover { color: var(--white); }
+
+      /* Resume */
+      .resume-section { background: #E8ECEB; border-block: 1px solid rgba(37,55,69,.08); }
+      .resume-card { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 24px; padding: clamp(20px, 2.5vw, 27px); border: 1px solid rgba(155,168,171,.34); border-radius: var(--radius-md); background: linear-gradient(130deg, var(--blue-charcoal), var(--deep)); box-shadow: 0 22px 50px rgba(6,20,27,.16); }
+      .resume-card-main { display: flex; align-items: flex-start; gap: 16px; min-width: 0; }
+      .resume-icon { display: grid; place-items: center; width: 52px; height: 58px; flex: 0 0 52px; color: var(--stone); border: 1px solid rgba(204,208,207,.18); border-radius: 10px; background: rgba(6,20,27,.5); }
+      .resume-icon svg { width: 25px; height: 25px; }
+      .resume-card h3 { margin: 0 0 5px; color: var(--white); font-size: 1.06rem; }
+      .resume-card p { margin: 0; color: #D2D9D8; font-size: .8rem; }
+      .resume-meta { margin-top: 8px; color: var(--mist); font-family: "DM Mono", monospace; font-size: .62rem; letter-spacing: .04em; }
+      .resume-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+      .resume-actions .button-dark { color: var(--night); background: var(--stone); }
+      .resume-actions .button-dark:hover { background: var(--white); }
+      .resume-actions .button-light { color: var(--white); border-color: rgba(204,208,207,.42); background: rgba(204,208,207,.05); }
+      .resume-actions .button-light:hover { background: rgba(204,208,207,.13); border-color: var(--mist); }
+
+      @media (max-width: 920px) {
+        .hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr); gap: 34px; }
+        .project-body { grid-template-columns: 1fr; }
+        .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 720px) {
+        .container { width: min(var(--max), calc(100% - 34px)); }
+        .nav { min-height: 70px; }
+        .menu-toggle { display: inline-flex; }
+        .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; padding: 18px 22px 22px; flex-direction: column; align-items: stretch; gap: 16px; background: rgba(6,20,27,.98); border-bottom: 1px solid rgba(204,208,207,.13); }
+        .nav-links.open { display: flex; }
+        .nav-links .nav-cta { text-align: center; }
+        .hero { padding: 56px 0 52px; }
+        .hero-grid, .about-grid { grid-template-columns: 1fr; }
+        .hero-grid { gap: 28px; }
+        .hero-panel { max-width: 560px; }
+        section.content-section { padding: 48px 0; }
+        .skills-grid { grid-template-columns: 1fr 1fr; }
+        .project-header { align-items: flex-start; flex-direction: column; padding: 18px 21px; }
+        .project-body { padding: 20px; }
+        .experience-card { grid-template-columns: 1fr; gap: 7px; padding: 20px; }
+        .experience-date { white-space: normal; }
+        .resume-card { grid-template-columns: 1fr; }
+        .resume-actions { width: 100%; }
+        .resume-actions .button { flex: 1 1 150px; }
+        .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .footer-inner { align-items: flex-start; flex-direction: column; }
+      }
+      @media (max-width: 460px) {
+        h1 { font-size: clamp(3rem, 16vw, 4.3rem); }
+        .skills-grid { grid-template-columns: 1fr; }
+        .contact-grid { grid-template-columns: 1fr; }
+        .resume-card-main { gap: 12px; }
+        .resume-icon { width: 46px; height: 52px; flex-basis: 46px; }
+        .arch-row { grid-template-columns: minmax(0,1fr) 16px minmax(0,1fr); gap: 4px; }
+        .arch-node { padding: 8px; }
+        .arch-node b { font-size: .66rem; }
+        .arch-node small { font-size: .58rem; }
+        .architecture { padding: 14px; }
+        .project-actions .button { width: 100%; }
+      }
+      @media (max-width: 720px) {
+        .section-head { margin-bottom: 21px; }
+        .about-grid { gap: 14px; }
+        .about-copy, .approach-card { padding: 20px; }
+        .skill-card { min-height: 0; padding: 18px; }
+        .project-body { gap: 18px; }
+        .resume-card { gap: 16px; }
+      }
+      @media (max-width: 460px) {
+        .container { width: min(var(--max), calc(100% - 28px)); }
+        .hero { padding: 48px 0 44px; }
+        .hero-panel { padding: 18px; }
+        .contact-grid { gap: 9px; }
+        .contact-card { padding: 13px 14px; }
+      }
+      /* Subtle scroll-reveal animation */
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity .62s ease,
+          transform .62s cubic-bezier(.22,.75,.25,1);
+        transition-delay: var(--reveal-delay, 0ms);
+      }
+      .scroll-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .project-carousel-track { transition: none; }
+        .scroll-reveal,
+        .scroll-reveal.is-visible {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      }
+
+      /* Compact Experience, Resume, and Contact sections */
+      section.content-section.experience-section,
+      section.content-section.resume-section {
+        padding: clamp(28px, 3.5vw, 40px) 0;
+      }
+
+      .experience-section .section-head,
+      .resume-section .section-head {
+        margin-bottom: 14px;
+      }
+
+      .experience-section .section-kicker,
+      .resume-section .section-kicker {
+        font-size: .63rem;
+      }
+
+      .experience-section h2,
+      .resume-section h2 {
+        margin: 5px 0 6px;
+        font-size: clamp(1.55rem, 2.8vw, 2.15rem);
+        line-height: 1.12;
+      }
+
+      .experience-section .section-intro,
+      .resume-section .section-intro {
+        max-width: 620px;
+        font-size: .84rem;
+        line-height: 1.5;
+      }
+
+      .experience-card {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        padding: 14px 18px;
+        border-radius: 12px;
+      }
+
+      .experience-card h3 {
+        margin-bottom: 2px;
+        font-size: .96rem;
+      }
+
+      .experience-company {
+        font-size: .78rem;
+      }
+
+      .experience-card p {
+        margin-top: 6px;
+        font-size: .79rem;
+        line-height: 1.5;
+      }
+
+      .experience-date {
+        padding-top: 3px;
+        font-size: .64rem;
+      }
+
+      .resume-card {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 16px;
+        padding: 14px 18px;
+        border-radius: 13px;
+      }
+
+      .resume-card-main {
+        align-items: center;
+        gap: 12px;
+      }
+
+      .resume-icon {
+        width: 42px;
+        height: 46px;
+        flex-basis: 42px;
+        border-radius: 8px;
+      }
+
+      .resume-icon svg {
+        width: 21px;
+        height: 21px;
+      }
+
+      .resume-card h3 {
+        margin-bottom: 3px;
+        font-size: .94rem;
+      }
+
+      .resume-card p {
+        font-size: .74rem;
+        line-height: 1.45;
+      }
+
+      .resume-meta {
+        margin-top: 5px;
+        font-size: .58rem;
+      }
+
+      .resume-actions {
+        gap: 7px;
+      }
+
+      .resume-actions .button {
+        min-height: 38px;
+        padding: 8px 12px;
+        font-size: .72rem;
+      }
+
+      .contact {
+        padding: 34px 0 36px;
+      }
+
+      .contact .section-kicker {
+        font-size: .63rem;
+      }
+
+      .contact h2 {
+        margin: 6px 0 7px;
+        font-size: clamp(1.7rem, 3vw, 2.35rem);
+        line-height: 1.12;
+      }
+
+      .contact p {
+        max-width: 620px;
+        font-size: .82rem;
+        line-height: 1.5;
+      }
+
+      .contact-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 15px;
+      }
+
+      .contact-card {
+        gap: 3px;
+        padding: 10px 12px;
+        border-radius: 9px;
+      }
+
+      .contact-card-label {
+        font-size: .57rem;
+      }
+
+      .contact-card strong {
+        font-size: .76rem;
+        line-height: 1.35;
+      }
+
+      .contact-card small {
+        font-size: .64rem;
+      }
+
+      .contact-location {
+        margin-top: 10px;
+        font-size: .71rem;
+      }
+
+      @media (max-width: 900px) {
+        .contact-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 720px) {
+        section.content-section.experience-section,
+        section.content-section.resume-section {
+          padding: 30px 0;
+        }
+
+        .experience-card {
+          grid-template-columns: 1fr;
+          gap: 5px;
+          padding: 13px 15px;
+        }
+
+        .experience-date {
+          padding-top: 0;
+        }
+
+        .resume-card {
+          grid-template-columns: 1fr;
+          gap: 12px;
+          padding: 14px 15px;
+        }
+
+        .resume-actions {
+          width: 100%;
+        }
+
+        .resume-actions .button {
+          flex: 1 1 140px;
+        }
+
+        .contact {
+          padding: 30px 0 32px;
+        }
+      }
+
+      @media (max-width: 460px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 7px;
+        }
+
+        .contact-card {
+          padding: 10px 12px;
+        }
+
+        .contact-location {
+          margin-top: 9px;
+        }
+      }
+
+    
+
+      /* Balanced spacing across the upper portfolio sections */
+      html { scroll-padding-top: 84px; }
+      .nav { min-height: 72px; }
+
+      .hero {
+        padding: clamp(38px, 4.8vw, 56px) 0 clamp(34px, 4.2vw, 48px);
+      }
+      .hero-grid {
+        gap: clamp(24px, 3.8vw, 48px);
+      }
+      h1 {
+        margin: 14px 0 12px;
+        font-size: clamp(3rem, 6.3vw, 5.55rem);
+        line-height: 1;
+      }
+      .hero-lede {
+        max-width: 610px;
+        font-size: clamp(.95rem, 1.35vw, 1.08rem);
+        line-height: 1.68;
+      }
+      .hero-actions {
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .hero-note {
+        margin-top: 14px;
+        font-size: .72rem;
+      }
+      .button {
+        min-height: 44px;
+        padding: 11px 16px;
+        font-size: .81rem;
+      }
+
+      section.content-section {
+        padding: clamp(28px, 3.5vw, 40px) 0;
+      }
+      .section-head {
+        margin-bottom: 14px;
+      }
+      .content-section .section-kicker {
+        font-size: .63rem;
+      }
+      .content-section h2 {
+        margin: 5px 0 6px;
+        font-size: clamp(1.55rem, 2.8vw, 2.15rem);
+        line-height: 1.12;
+      }
+      .content-section .section-intro {
+        max-width: 620px;
+        font-size: .84rem;
+        line-height: 1.5;
+      }
+
+      .about-grid { gap: 12px; }
+      .about-copy,
+      .approach-card { padding: 18px 20px; }
+      .skill-card {
+        min-height: 0;
+        padding: 16px;
+        border-radius: 12px;
+      }
+      .skill-card h3 { margin: 7px 0 9px; }
+
+      .project-header { padding: 14px 18px; }
+      .project-body { gap: 18px; padding: 18px; }
+      .project-gallery { padding: 0 18px 18px; }
+      .gallery-heading { margin-bottom: 12px; }
+      .project-gallery-grid { gap: 10px; }
+      .project-shot figcaption {
+        padding: 8px 10px;
+        font-size: .71rem;
+      }
+
+      @media (max-width: 720px) {
+        html { scroll-padding-top: 72px; }
+        .nav { min-height: 64px; }
+        .nav-links { top: 64px; }
+        .hero { padding: 34px 0 32px; }
+        .hero-grid { gap: 22px; }
+        section.content-section { padding: 30px 0; }
+        .project-header { padding: 14px 16px; }
+        .project-body { padding: 16px; gap: 16px; }
+        .project-gallery { padding: 0 16px 16px; }
+      }
+
+      @media (max-width: 460px) {
+        .hero { padding: 30px 0; }
+        h1 { font-size: clamp(2.8rem, 13vw, 3.75rem); }
+        .about-copy,
+        .approach-card { padding: 16px; }
+        .skill-card { padding: 15px; }
+        .project-gallery { padding: 0 14px 14px; }
+      }
 
 
-    @media (max-width: 920px) {
-      .hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr); gap: 34px; }
-      .project-body { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 720px) {
-      .container { width: min(var(--max), calc(100% - 34px)); }
-      .nav { min-height: 70px; }
-      .menu-toggle { display: inline-flex; }
-      .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; padding: 18px 22px 22px; flex-direction: column; align-items: stretch; gap: 16px; background: rgba(6,20,27,.98); border-bottom: 1px solid rgba(204,208,207,.13); }
-      .nav-links.open { display: flex; }
-      .nav-links .nav-cta { text-align: center; }
-      .hero { padding: 56px 0 52px; }
-      .hero-grid, .about-grid { grid-template-columns: 1fr; }
-      .hero-grid { gap: 28px; }
-      .hero-panel { max-width: 560px; }
-      section.content-section { padding: 48px 0; }
-      .skills-grid { grid-template-columns: 1fr 1fr; }
-      .project-header { align-items: flex-start; flex-direction: column; padding: 18px 21px; }
-      .project-body { padding: 20px; }
-      .experience-card { grid-template-columns: 1fr; gap: 7px; padding: 20px; }
-      .experience-date { white-space: normal; }
-      .resume-card { grid-template-columns: 1fr; }
-      .resume-actions { width: 100%; }
-      .resume-actions .button { flex: 1 1 150px; }
-      .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
-    }
-    @media (max-width: 460px) {
-      h1 { font-size: clamp(3rem, 16vw, 4.3rem); }
-      .skills-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .resume-card-main { gap: 12px; }
-      .resume-icon { width: 46px; height: 52px; flex-basis: 46px; }
-      .arch-row { grid-template-columns: minmax(0,1fr) 16px minmax(0,1fr); gap: 4px; }
-      .arch-node { padding: 8px; }
-      .arch-node b { font-size: .66rem; }
-      .arch-node small { font-size: .58rem; }
-      .architecture { padding: 14px; }
-      .project-actions .button { width: 100%; }
-    }
-    @media (max-width: 720px) {
-      .section-head { margin-bottom: 21px; }
-      .about-grid { gap: 14px; }
-      .about-copy, .approach-card { padding: 20px; }
-      .skill-card { min-height: 0; padding: 18px; }
-      .project-body { gap: 18px; }
-      .resume-card { gap: 16px; }
-    }
-    @media (max-width: 460px) {
-      .container { width: min(var(--max), calc(100% - 28px)); }
-      .hero { padding: 48px 0 44px; }
-      .hero-panel { padding: 18px; }
-      .contact-grid { gap: 9px; }
-      .contact-card { padding: 13px 14px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
-    }
-  </style>
-</head>
-<body>
-  <header class="topbar">
-    <nav class="nav container" aria-label="Main navigation">
-      <a class="brand" href="#home" aria-label="Pankaj Dhavale home">
-        <span class="brand-rule" aria-hidden="true"></span>
-        <span class="brand-copy">
-          <span class="brand-name">Pankaj Dhavale</span>
-          <span class="brand-caption">Cloud engineer</span>
-        </span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
-      <div class="nav-links" id="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Expertise</a>
-        <a href="#projects">Project</a>
-        <a href="#experience">Experience</a>
-        <a href="#resume">Resume</a>
-        <a class="nav-cta" href="#contact">Let’s connect <span aria-hidden="true">↗</span></a>
-      </div>
-    </nav>
-  </header>
+      /* Unified vertical color system — based on the supplied palette */
+      :root {
+        --night: #06141B;
+        --deep: #11212D;
+        --blue-charcoal: #253745;
+        --slate: #4A5C6A;
+        --mist: #9BA8AB;
+        --stone: #CCD0CF;
+        --surface: #9BA8AB;
+        --surface-bright: #E7EAE9;
+        --white: #F3F5F4;
+        --text: #06141B;
+        --muted: #354854;
+        --line: rgba(37, 55, 69, .18);
+      }
 
-  <main>
-    <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">Cloud Engineering<span aria-hidden="true">/</span> AWS &amp; infrastructure</div>
-          <h1 id="hero-title">Engineering <br><span>Cloud Solutions.</span></h1>
-          <p class="hero-lede">I’m Pankaj Dhavale. I turn cloud concepts into practical solutions, with a focus on AWS infrastructure, Linux administration, networking, and methodical troubleshooting.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↘</span></a>
-            <a class="button button-secondary" href="https://github.com/pankaj0924" target="_blank" rel="noopener noreferrer">GitHub profile <span aria-hidden="true">↗</span></a>
+      body { background: #CCD0CF; color: #06141B; }
+      .topbar { background: rgba(6, 20, 27, .97); }
+
+      /* The light sections move gradually through mist and stone shades. */
+      #about {
+        background: linear-gradient(135deg, #CCD0CF 0%, #C4CCCB 52%, #9BA8AB 100%);
+        border-bottom: 1px solid rgba(6, 20, 27, .08);
+      }
+      #skills {
+        background: linear-gradient(135deg, #9BA8AB 0%, #AEB8BA 52%, #CCD0CF 100%);
+        border-block: 1px solid rgba(6, 20, 27, .10);
+      }
+      #projects {
+        background: linear-gradient(145deg, #CCD0CF 0%, #D9DEDD 54%, #B7C1C1 100%);
+        border-bottom: 1px solid rgba(6, 20, 27, .09);
+      }
+      #experience {
+        background: linear-gradient(135deg, #9BA8AB 0%, #B5BFC0 58%, #CCD0CF 100%);
+        border-block: 1px solid rgba(6, 20, 27, .10);
+      }
+      #resume {
+        background: linear-gradient(145deg, #CCD0CF 0%, #B8C2C2 100%);
+        border-block: 1px solid rgba(6, 20, 27, .09);
+      }
+
+      .surface-card {
+        background: rgba(243, 245, 244, .82);
+        border-color: rgba(37, 55, 69, .18);
+        box-shadow: 0 18px 42px rgba(6, 20, 27, .10);
+      }
+      .skill-card {
+        background: rgba(204, 208, 207, .88);
+        border-color: rgba(37, 55, 69, .20);
+      }
+      .skill-pills span { background: rgba(243, 245, 244, .82); }
+      .project-shell {
+        background: #E7EAE9;
+        border-color: rgba(37, 55, 69, .22);
+        box-shadow: 0 22px 54px rgba(6, 20, 27, .12);
+      }
+      .project-header,
+      .project-footnote { background: #CCD0CF; }
+      .project-shot { background: #E7EAE9; }
+      .experience-card {
+        background: rgba(243, 245, 244, .82);
+        border-color: rgba(37, 55, 69, .20);
+      }
+      .resume-card {
+        background: linear-gradient(130deg, #253745 0%, #11212D 72%, #06141B 100%);
+        border-color: rgba(74, 92, 106, .55);
+      }
+      .contact {
+        background:
+          radial-gradient(ellipse at 82% 18%, rgba(155, 168, 171, .20), transparent 38%),
+          linear-gradient(125deg, #253745 0%, #11212D 54%, #06141B 100%);
+      }
+      .contact-card {
+        background: linear-gradient(145deg, rgba(74, 92, 106, .36), rgba(17, 33, 45, .74));
+        border-color: rgba(155, 168, 171, .30);
+      }
+      .contact-card:hover {
+        background: linear-gradient(145deg, rgba(74, 92, 106, .62), rgba(37, 55, 69, .88));
+        border-color: rgba(204, 208, 207, .62);
+      }
+      footer {
+        color: #CCD0CF;
+        background: #06141B;
+        border-top: 1px solid rgba(155, 168, 171, .22);
+      }
+      .footer-inner a { color: #CCD0CF; }
+
+      /* Keep the palette transitions subtle on small screens too. */
+      @media (max-width: 720px) {
+        #about { background: linear-gradient(160deg, #CCD0CF 0%, #B8C2C2 100%); }
+        #skills { background: linear-gradient(160deg, #9BA8AB 0%, #CCD0CF 100%); }
+        #projects { background: linear-gradient(160deg, #CCD0CF 0%, #B8C2C2 100%); }
+        #experience { background: linear-gradient(160deg, #9BA8AB 0%, #CCD0CF 100%); }
+      }
+
+
+      /* One calm, continuous background from About through Resume. */
+      #about,
+      #skills,
+      #projects,
+      #experience,
+      #resume {
+        background: #CCD0CF;
+        border-top: 1px solid rgba(6, 20, 27, .07);
+        border-bottom: 1px solid rgba(6, 20, 27, .07);
+      }
+
+      /* Keep the same section color on mobile; cards provide the contrast. */
+      @media (max-width: 720px) {
+        #about,
+        #skills,
+        #projects,
+        #experience,
+        #resume {
+          background: #CCD0CF;
+        }
+      }
+
+
+
+      /* Seamless section joins: keep the shared surface continuous. */
+      #about,
+      #skills,
+      #projects,
+      #experience,
+      #resume {
+        border-top: 0;
+        border-bottom: 0;
+      }
+
+
+
+      /* Match the six expertise cards to the About card surfaces. */
+      .skills-section .skill-card {
+        background: rgba(243, 245, 244, .82);
+        border-color: rgba(37, 55, 69, .18);
+      }
+
+      /* Blend the Featured AWS Project title bar into the project body. */
+      .project-shell .project-header {
+        background: #E7EAE9;
+        border-bottom: 0;
+      }
+
+    
+
+      /* Seamless navigation-to-hero transition and persistent navigation. */
+      .topbar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 0;
+        background:
+          linear-gradient(128deg,
+            rgba(6, 20, 27, .98) 0%,
+            rgba(17, 33, 45, .98) 58%,
+            rgba(37, 55, 69, .98) 100%);
+        -webkit-backdrop-filter: blur(18px);
+        backdrop-filter: blur(18px);
+      }
+
+      .hero {
+        margin-top: 0;
+        border-top: 0;
+      }
+
+      /* Keep the mobile navigation attached to the same header gradient. */
+      @media (max-width: 720px) {
+        .nav-links {
+          background: linear-gradient(128deg,
+            rgba(6, 20, 27, .99) 0%,
+            rgba(17, 33, 45, .99) 58%,
+            rgba(37, 55, 69, .99) 100%);
+          border-bottom: 0;
+        }
+      }
+
+      /* Let Contact fade into the footer using only the existing palette. */
+      .contact {
+        background:
+          radial-gradient(ellipse at 82% 18%, rgba(155, 168, 171, .18), transparent 38%),
+          linear-gradient(180deg,
+            var(--blue-charcoal) 0%,
+            var(--deep) 56%,
+            var(--night) 100%);
+      }
+
+      footer {
+        background: var(--night);
+        border-top: 0;
+      }
+
+    
+
+      /* Final seam cleanup: blend the navigation into the hero and remove the tech divider. */
+      .topbar {
+        border-bottom: 0 !important;
+        box-shadow: none !important;
+        background:
+          radial-gradient(ellipse at 78% 18%, rgba(74, 92, 106, .22), transparent 38%),
+          linear-gradient(128deg,
+            rgba(6, 20, 27, .99) 0%,
+            rgba(17, 33, 45, .99) 58%,
+            rgba(37, 55, 69, .99) 100%);
+      }
+
+      /* A one-pixel overlap prevents a hairline from appearing at the section join. */
+      .hero {
+        margin-top: -1px;
+        border-top: 0 !important;
+      }
+
+      /* Keep the existing spacing, but remove the rule above Technologies used. */
+      .tech-line {
+        border-top: 0 !important;
+        padding-top: 0;
+      }
+
+    
+      /* Seamless top navigation: the hero paints continuously behind the header. */
+      :root {
+        --nav-height: 72px;
+      }
+
+      .topbar {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 1000;
+        border: 0 !important;
+        outline: 0 !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+        transition: background .24s ease, backdrop-filter .24s ease;
+      }
+
+      .topbar.is-scrolled {
+        background: linear-gradient(
+          128deg,
+          rgba(6, 20, 27, .97) 0%,
+          rgba(17, 33, 45, .97) 58%,
+          rgba(37, 55, 69, .97) 100%
+        ) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        backdrop-filter: blur(16px) !important;
+      }
+
+      /* Fixed navigation no longer occupies document flow, so reserve its space
+         inside the hero. The hero background now begins at the very top edge. */
+      .hero {
+        margin-top: 0 !important;
+        padding-top: calc(var(--nav-height) + clamp(38px, 4.8vw, 56px)) !important;
+        border-top: 0 !important;
+      }
+
+      .topbar .nav {
+        min-height: var(--nav-height);
+      }
+
+      @media (max-width: 720px) {
+        :root {
+          --nav-height: 64px;
+        }
+
+        .hero {
+          padding-top: calc(var(--nav-height) + 34px) !important;
+        }
+
+        .topbar.is-scrolled .nav-links,
+        .topbar .nav-links {
+          background: linear-gradient(
+            128deg,
+            rgba(6, 20, 27, .99) 0%,
+            rgba(17, 33, 45, .99) 58%,
+            rgba(37, 55, 69, .99) 100%
+          );
+          border-bottom: 0 !important;
+        }
+      }
+
+      @media (max-width: 460px) {
+        .hero {
+          padding-top: calc(var(--nav-height) + 30px) !important;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="nav container" aria-label="Main navigation">
+        <a class="brand" href="#home" aria-label="Pankaj Dhavale home"> <span class="brand-rule" aria-hidden="true"></span> <span class="brand-copy"> <span class="brand-name">Pankaj Dhavale</span> <span class="brand-caption">Cloud engineer</span> </span> </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+        <div class="nav-links" id="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Expertise</a>
+          <a href="#projects">Project</a>
+          <a href="#experience">Experience</a>
+          <a href="#resume">Resume</a>
+          <a class="nav-cta" href="#contact">Let’s connect <span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Cloud Engineering<span aria-hidden="true">/</span> AWS &amp; infrastructure</div>
+            <h1 id="hero-title">Engineering <br><span>Cloud Solutions.</span></h1>
+            <p class="hero-lede">I’m Pankaj Dhavale. I turn cloud concepts into practical solutions, with a focus on AWS infrastructure, Linux administration, networking, and methodical troubleshooting.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↘</span></a>
+              <a class="button button-secondary" href="https://github.com/pankaj0924" target="_blank" rel="noopener noreferrer">GitHub profile <span aria-hidden="true">↗</span></a>
+            </div>
+            <p class="hero-note">Learn by building · Test with purpose · Document clearly</p>
           </div>
-          <p class="hero-note">Learn by building · Test with purpose · Document clearly</p>
-        </div>
-
-        <aside class="hero-panel" aria-label="Portfolio overview" style="padding: 20px;">
-  <div class="panel-top" style="padding-bottom: 11px;">
-    <span class="mini-label">Portfolio overview / 2026</span>
-    <span class="availability">Actively learning</span>
-  </div>
-
-  <div class="hero-stat" style="padding: 10px 0;">
-    <strong>Career focus</strong>
-    <span>AWS Cloud Engineer · DevOps Engineer</span>
-  </div>
-
-  <div class="hero-stat" style="padding: 10px 0;">
-    <strong>Core foundations</strong>
-    <span>Linux · Networking · Git &amp; GitHub</span>
-  </div>
-
-  <div class="hero-stat" style="padding: 10px 0;">
-    <strong>AWS technologies</strong>
-    <span>IAM · EC2 · S3 · VPC</span>
-  </div>
-
-  <div class="hero-stat" style="padding: 10px 0; border-bottom: 0;">
-    <strong>Cloud operations</strong>
-    <span>CloudWatch · Linux Administration · Troubleshooting</span>
-  </div>
-
-  <!-- <div class="hero-stack" aria-label="Core technologies"
-       style="margin-top: 10px; gap: 6px;">
-    <span>AMAZON EC2</span>
-    <span>AMAZON S3</span>
-    <span>IAM</span>
-    <span>VPC</span>
-    <span>CLOUDWATCH</span>
-  </div> -->
-</aside>
-    </section>
-
-    <section class="content-section" id="about" aria-labelledby="about-title">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">01 / About</div>
-          <h2 id="about-title">Curiosity backed by hands-on work.</h2>
-          <p class="section-intro">I’m developing my skills for Cloud Support, Junior Cloud, and DevOps roles, with a focus on understanding how infrastructure works and solving real-world technical challenges.</p>
-        </div>
-        <div class="about-grid">
-          <article class="surface-card about-copy">
-            <p>My technical support experience has strengthened my skills in technical analysis, troubleshooting, incident resolution, and documentation. It has helped me develop a structured approach to problem-solving and a strong interest in cloud infrastructure and operations.</p>
-
-<p>Through hands-on AWS projects, I completed a Cloud Support Lab involving EC2 website deployment, VPC networking, IAM-based access controls, and S3 storage integration. I also configured CloudWatch CPU monitoring, alarms, and SNS email notifications to gain practical experience in cloud monitoring and operations.</p>
-
-<p>Alongside AWS, I am strengthening my foundations in Linux administration, networking, Git, and GitHub through practical exercises and troubleshooting. I focus on understanding system configurations, managing permissions, working with version control, and documenting my technical work.</p>
-          </article>
-          <aside class="surface-card approach-card" aria-label="My working approach">
-            <h3>How I approach technology</h3>
-            <div class="approach-list">
-              <div class="approach-item"><span class="approach-number">01</span><div><strong>Build to understand</strong><p>Practise AWS services and Linux administration in hands-on lab environments.</p></div></div>
-              <div class="approach-item"><span class="approach-number">02</span><div><strong>Troubleshoot with a method</strong><p>Check networking, permissions, services, and logs before changing configurations.</p></div></div>
-              <div class="approach-item"><span class="approach-number">03</span><div><strong>Make the work clear</strong><p>Document architecture, configuration choices, outcomes, and limitations.</p></div></div>
+          <aside class="hero-panel" aria-label="Portfolio overview" style="padding: 20px;">
+            <div class="panel-top" style="padding-bottom: 11px;">
+              <span class="mini-label">Portfolio overview / 2026</span>
+              <span class="availability">Actively learning</span>
+            </div>
+            <div class="hero-stat" style="padding: 10px 0;">
+              <strong>Career focus</strong>
+              <span>AWS Cloud Engineer · DevOps Engineer</span>
+            </div>
+            <div class="hero-stat" style="padding: 10px 0;">
+              <strong>Core foundations</strong>
+              <span>Linux · Networking · Git &amp; GitHub</span>
+            </div>
+            <div class="hero-stat" style="padding: 10px 0;">
+              <strong>AWS technologies</strong>
+              <span>IAM · EC2 · S3 · VPC</span>
+            </div>
+            <div class="hero-stat" style="padding: 10px 0; border-bottom: 0;">
+              <strong>Cloud operations</strong>
+              <span>CloudWatch · Linux Administration · Troubleshooting</span>
             </div>
           </aside>
         </div>
-      </div>
-    </section>
-
-    <section class="content-section skills-section" id="skills" aria-labelledby="skills-title">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">02 / Expertise</div>
-          <h2 id="skills-title">The tools behind the work.</h2>
-          <p class="section-intro">A focused set of cloud, operating system, networking, development, and technical support skills from my current experience and project work.</p>
-        </div>
-        <div class="skills-grid">
-          <article class="skill-card"><span class="skill-index">01 — CLOUD</span><h3>Cloud &amp; AWS</h3><div class="skill-pills"><span>AWS IAM</span><span>Amazon EC2</span><span>Amazon S3</span><span>Amazon VPC</span><span>CloudWatch</span><span>Amazon SNS</span></div></article>
-          <article class="skill-card"><span class="skill-index">02 — SYSTEMS</span><h3>Operating systems</h3><div class="skill-pills"><span>Linux (Ubuntu)</span><span>Amazon Linux</span><span>Linux commands</span><span>File permissions</span><span>Apache HTTP Server</span></div></article>
-          <article class="skill-card"><span class="skill-index">03 — NETWORK</span><h3>Networking</h3><div class="skill-pills"><span>TCP/IP</span><span>DNS</span><span>IPv4</span><span>Subnetting</span><span>HTTP/HTTPS</span><span>SSH</span></div></article>
-          <article class="skill-card"><span class="skill-index">04 — DEVELOPMENT</span><h3>Programming &amp; databases</h3><div class="skill-pills"><span>Python</span><span>C</span><span>Flask</span><span>MySQL</span><span>HTML</span><span>CSS</span><span>JavaScript</span></div></article>
-          <article class="skill-card"><span class="skill-index">05 — TOOLS</span><h3>Tools &amp; workflow</h3><div class="skill-pills"><span>Git</span><span>GitHub</span><span>VS Code</span><span>AWS CLI</span></div></article>
-          <article class="skill-card"><span class="skill-index">06 — SUPPORT</span><h3>Technical support</h3><div class="skill-pills"><span>Troubleshooting</span><span>Issue resolution</span><span>SLA management</span><span>Technical documentation</span></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section" id="projects" aria-labelledby="projects-title">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">03 / Selected work</div>
-          <h2 id="projects-title">Work that demonstrates what I can do.</h2>
-          <p class="section-intro">More projects will be added as they are completed, tested, and documented.</p>
-        </div>
-        <article class="project-shell">
-          <div class="project-header">
-            <div class="project-label"><span class="project-check" aria-hidden="true">✓</span> Featured AWS project</div>
-            <span class="project-status">Completed · Hands-on lab</span>
+      </section>
+      <section class="content-section" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">01 / About</div>
+            <h2 id="about-title">Curiosity backed by hands-on work.</h2>
+            <p class="section-intro">I’m developing my skills for Cloud Support, Junior Cloud, and DevOps roles, with a focus on understanding how infrastructure works and solving real-world technical challenges.</p>
           </div>
-          <div class="project-body">
-            <div class="project-copy">
-              <h3>My Cloud Support Lab</h3>
-              <p>A hands-on AWS environment where I deployed a responsive static website on EC2, configured VPC networking and IAM-based S3 access, and added CloudWatch monitoring with SNS email alerts.</p>
-              <ul class="project-list">
-                <li>Launched a <strong>t3.micro EC2</strong> instance using Amazon Linux 2023 and hosted the website with Apache.</li>
-                <li>Configured a public subnet, Internet Gateway, route table, and security group with HTTP access and SSH restricted to my IP.</li>
-                <li>Attached an EC2 IAM role with scoped permissions and tested S3 object upload and download in the <strong>ec2-backups/</strong> prefix.</li>
-                <li>Worked across regions: EC2 in <strong>eu-north-1</strong> and the S3 bucket in <strong>ap-south-1</strong>.</li>
-                <li>Created a CloudWatch dashboard and CPU alarm for average utilization above <strong>80%</strong>, with an SNS email notification action.</li>
-                <li>Documented configuration, security choices, troubleshooting, screenshots, and the project architecture.</li>
-              </ul>
-              <div class="tech-line"><strong>Technologies used</strong><div><span>AWS EC2</span><span>VPC</span><span>IAM</span><span>S3</span><span>CloudWatch</span><span>SNS</span><span>Linux</span><span>Apache</span><span>HTML &amp; CSS</span></div></div>
-              <div class="project-actions">
-                <a class="button button-dark" href="https://github.com/pankaj0924/mycloud_support_lab" target="_blank" rel="noopener noreferrer">View GitHub repository <span aria-hidden="true">↗</span></a>
-                <a class="button button-light" href="https://github.com/pankaj0924/mycloud_support_lab#readme" target="_blank" rel="noopener noreferrer">Read project details</a>
+          <div class="about-grid">
+            <article class="surface-card about-copy">
+              <p>My technical support experience has strengthened my skills in technical analysis, troubleshooting, incident resolution, and documentation. It has helped me develop a structured approach to problem-solving and a strong interest in cloud infrastructure and operations.</p>
+              <p>Through hands-on AWS projects, I completed a Cloud Support Lab involving EC2 website deployment, VPC networking, IAM-based access controls, and S3 storage integration. I also configured CloudWatch CPU monitoring, alarms, and SNS email notifications to gain practical experience in cloud monitoring and operations.</p>
+              <p>Alongside AWS, I am strengthening my foundations in Linux administration, networking, Git, and GitHub through practical exercises and troubleshooting. I focus on understanding system configurations, managing permissions, working with version control, and documenting my technical work.</p>
+            </article>
+            <aside class="surface-card approach-card" aria-label="My working approach">
+              <h3>How I approach technology</h3>
+              <div class="approach-list">
+                <div class="approach-item">
+                  <span class="approach-number">01</span>
+                  <div>
+                    <strong>Build to understand</strong>
+                    <p>Practise AWS services and Linux administration in hands-on lab environments.</p>
+                  </div>
+                </div>
+                <div class="approach-item">
+                  <span class="approach-number">02</span>
+                  <div>
+                    <strong>Troubleshoot with a method</strong>
+                    <p>Check networking, permissions, services, and logs before changing configurations.</p>
+                  </div>
+                </div>
+                <div class="approach-item">
+                  <span class="approach-number">03</span>
+                  <div>
+                    <strong>Make the work clear</strong>
+                    <p>Document architecture, configuration choices, outcomes, and limitations.</p>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="content-section skills-section" id="skills" aria-labelledby="skills-title">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">02 / Expertise</div>
+            <h2 id="skills-title">The tools behind the work.</h2>
+            <p class="section-intro">A focused set of cloud, operating system, networking, development, and technical support skills from my current experience and project work.</p>
+          </div>
+          <div class="skills-grid">
+            <article class="skill-card">
+              <span class="skill-index">01 — CLOUD</span>
+              <h3>Cloud &amp; AWS</h3>
+              <div class="skill-pills">
+                <span>AWS IAM</span>
+                <span>Amazon EC2</span>
+                <span>Amazon S3</span>
+                <span>Amazon VPC</span>
+                <span>CloudWatch</span>
+                <span>Amazon SNS</span>
+              </div>
+            </article>
+            <article class="skill-card">
+              <span class="skill-index">02 — SYSTEMS</span>
+              <h3>Operating systems</h3>
+              <div class="skill-pills">
+                <span>Linux (Ubuntu)</span>
+                <span>Amazon Linux</span>
+                <span>Linux commands</span>
+                <span>File permissions</span>
+                <span>Apache HTTP Server</span>
+              </div>
+            </article>
+            <article class="skill-card">
+              <span class="skill-index">03 — NETWORK</span>
+              <h3>Networking</h3>
+              <div class="skill-pills">
+                <span>TCP/IP</span>
+                <span>DNS</span>
+                <span>IPv4</span>
+                <span>Subnetting</span>
+                <span>HTTP/HTTPS</span>
+                <span>SSH</span>
+              </div>
+            </article>
+            <article class="skill-card">
+              <span class="skill-index">04 — DEVELOPMENT</span>
+              <h3>Programming &amp; databases</h3>
+              <div class="skill-pills">
+                <span>Python</span>
+                <span>C</span>
+                <span>Flask</span>
+                <span>MySQL</span>
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
+            </article>
+            <article class="skill-card">
+              <span class="skill-index">05 — TOOLS</span>
+              <h3>Tools &amp; workflow</h3>
+              <div class="skill-pills">
+                <span>Git</span>
+                <span>GitHub</span>
+                <span>VS Code</span>
+                <span>AWS CLI</span>
+              </div>
+            </article>
+            <article class="skill-card">
+              <span class="skill-index">06 — SUPPORT</span>
+              <h3>Technical support</h3>
+              <div class="skill-pills">
+                <span>Troubleshooting</span>
+                <span>Issue resolution</span>
+                <span>SLA management</span>
+                <span>Technical documentation</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="content-section" id="projects" aria-labelledby="projects-title">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">03 / Selected work</div>
+            <h2 id="projects-title">Work that demonstrates what I can do.</h2>
+            <p class="section-intro">More projects will be added as they are completed, tested, and documented.</p>
+          </div>
+          <div class="project-carousel" aria-label="Selected projects carousel">
+            <div class="project-carousel-controls">
+              <button class="project-carousel-button" type="button" id="project-prev" aria-label="Show previous project">← Previous</button>
+              <span class="project-carousel-status" id="project-carousel-status" aria-live="polite">01 / 02 · My Cloud Support Lab</span>
+              <button class="project-carousel-button" type="button" id="project-next" aria-label="Show next project">Next →</button>
+            </div>
+            <div class="project-carousel-viewport" id="project-carousel-viewport" tabindex="0" aria-label="Project slides. Use the left and right arrow keys, the buttons, mouse drag, touchscreen swipe, or a two-finger horizontal touchpad gesture.">
+              <div class="project-carousel-track" id="project-carousel-track">
+          <article class="project-shell project-carousel-slide" data-project-name="My Cloud Support Lab" aria-label="Project 1: My Cloud Support Lab">
+            <div class="project-header">
+              <div class="project-label"><span class="project-check" aria-hidden="true">✓</span> Featured AWS project</div>
+              <span class="project-status">Completed · Hands-on lab</span>
+            </div>
+            <div class="project-body">
+              <div class="project-copy">
+                <h3>My Cloud Support Lab</h3>
+                <p>A hands-on AWS environment where I deployed a responsive static website on EC2, configured VPC networking and IAM-based S3 access, and added CloudWatch monitoring with SNS email alerts.</p>
+                <ul class="project-list">
+                  <li>Launched a <strong>t3.micro EC2</strong> instance using Amazon Linux 2023 and hosted the website with Apache.</li>
+                  <li>Configured a public subnet, Internet Gateway, route table, and security group with HTTP access and SSH restricted to my IP.</li>
+                  <li>Attached an EC2 IAM role with scoped permissions and tested S3 object upload and download in the <strong>ec2-backups/</strong> prefix.</li>
+                  <li>Worked across regions: EC2 in <strong>eu-north-1</strong> and the S3 bucket in <strong>ap-south-1</strong>.</li>
+                  <li>Created a CloudWatch dashboard and CPU alarm for average utilization above <strong>80%</strong>, with an SNS email notification action.</li>
+                  <li>Documented configuration, security choices, troubleshooting, screenshots, and the project architecture.</li>
+                </ul>
+                <div class="tech-line">
+                  <strong>Technologies used</strong>
+                  <div>
+                    <span>AWS EC2</span>
+                    <span>VPC</span>
+                    <span>IAM</span>
+                    <span>S3</span>
+                    <span>CloudWatch</span>
+                    <span>SNS</span>
+                    <span>Linux</span>
+                    <span>Apache</span>
+                    <span>HTML &amp; CSS</span>
+                  </div>
+                </div>
+                <div class="project-actions">
+                  <a class="button button-dark" href="https://github.com/pankaj0924/mycloud_support_lab" target="_blank" rel="noopener noreferrer">View GitHub repository <span aria-hidden="true">↗</span></a>
+                  <a class="button button-light" href="https://github.com/pankaj0924/mycloud_support_lab#readme" target="_blank" rel="noopener noreferrer">Read project details</a>
+                </div>
+              </div>
+              <div class="architecture" aria-label="Simplified architecture of the AWS Cloud Support Lab">
+                <div class="architecture-head">
+                  <strong>Project architecture</strong>
+                  <span>HIGH-LEVEL VIEW</span>
+                </div>
+                <div class="arch-flow">
+                  <div class="arch-row">
+                    <div class="arch-node">
+                      <b>Internet user</b>
+                      <small>Browser · HTTP request</small>
+                    </div>
+                    <div class="arch-arrow" aria-hidden="true">→</div>
+                    <div class="arch-node">
+                      <b>Internet Gateway</b>
+                      <small>Internet connectivity for VPC</small>
+                    </div>
+                  </div>
+                  <div class="arch-row">
+                    <div class="arch-node">
+                      <b>Public subnet</b>
+                      <small>EC2 instance · eu-north-1</small>
+                    </div>
+                    <div class="arch-arrow" aria-hidden="true">→</div>
+                    <div class="arch-node">
+                      <b>EC2 + Apache</b>
+                      <small>Serves the responsive website</small>
+                    </div>
+                  </div>
+                  <div class="arch-row">
+                    <div class="arch-node">
+                      <b>EC2 IAM role</b>
+                      <small>Scoped access permissions</small>
+                    </div>
+                    <div class="arch-arrow" aria-hidden="true">→</div>
+                    <div class="arch-node">
+                      <b>Amazon S3</b>
+                      <small>Test-object operations · ap-south-1</small>
+                    </div>
+                  </div>
+                  <div class="arch-row">
+                    <div class="arch-node">
+                      <b>CloudWatch</b>
+                      <small>EC2 CPU metric and alarm</small>
+                    </div>
+                    <div class="arch-arrow" aria-hidden="true">→</div>
+                    <div class="arch-node">
+                      <b>Amazon SNS</b>
+                      <small>Email notification action</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="arch-config"><strong>Subnet routing:</strong> <code>0.0.0.0/0 → Internet Gateway</code>. The route table is a subnet configuration, not a separate traffic-processing device.</div>
+                <p class="arch-note">S3 integration was tested with object uploads and downloads; automated backup scheduling was not implemented.</p>
               </div>
             </div>
-            <div class="architecture" aria-label="Simplified architecture of the AWS Cloud Support Lab">
-              <div class="architecture-head"><strong>Project architecture</strong><span>HIGH-LEVEL VIEW</span></div>
-              <div class="arch-flow">
-                <div class="arch-row"><div class="arch-node"><b>Internet user</b><small>Browser · HTTP request</small></div><div class="arch-arrow" aria-hidden="true">→</div><div class="arch-node"><b>Internet Gateway</b><small>Internet connectivity for VPC</small></div></div>
-                <div class="arch-row"><div class="arch-node"><b>Public subnet</b><small>EC2 instance · eu-north-1</small></div><div class="arch-arrow" aria-hidden="true">→</div><div class="arch-node"><b>EC2 + Apache</b><small>Serves the responsive website</small></div></div>
-                <div class="arch-row"><div class="arch-node"><b>EC2 IAM role</b><small>Scoped access permissions</small></div><div class="arch-arrow" aria-hidden="true">→</div><div class="arch-node"><b>Amazon S3</b><small>Test-object operations · ap-south-1</small></div></div>
-                <div class="arch-row"><div class="arch-node"><b>CloudWatch</b><small>EC2 CPU metric and alarm</small></div><div class="arch-arrow" aria-hidden="true">→</div><div class="arch-node"><b>Amazon SNS</b><small>Email notification action</small></div></div>
+            <!-- Project Screenshot Gallery -->
+            <div class="project-gallery">
+              <div class="gallery-heading">
+                <h3>Implementation Gallery</h3>
+                <p>A closer look at the implementation.</p>
               </div>
-              <div class="arch-config"><strong>Subnet routing:</strong> <code>0.0.0.0/0 → Internet Gateway</code>. The route table is a subnet configuration, not a separate traffic-processing device.</div>
-              <p class="arch-note">S3 integration was tested with object uploads and downloads; automated backup scheduling was not implemented.</p>
+              <div class="project-gallery-grid">
+                <figure class="project-shot">
+                  <a href="Cloudlab/Screenshot%202026-11-11%20091830.png" target="_blank" rel="noopener noreferrer">
+                    <img src="Cloudlab/Screenshot%202026-11-11%20091830.png" alt="AWS EC2 instance" loading="lazy">
+                  </a>
+                  <figcaption>EC2 Instance</figcaption>
+                </figure>
+                <figure class="project-shot">
+                  <a href="Cloudlab/Screenshot%202026-11-11%20123353.png" target="_blank" rel="noopener noreferrer">
+                    <img src="Cloudlab/Screenshot%202026-11-11%20123353.png" alt="Cloud Support Lab website" loading="lazy">
+                  </a>
+                  <figcaption>Live Website</figcaption>
+                </figure>
+                <figure class="project-shot">
+                  <a href="Cloudlab/Screenshot%202026-11-10%20202705.png" target="_blank" rel="noopener noreferrer">
+                    <img src="Cloudlab/Screenshot%202026-11-10%20202705.png" alt="Apache server status" loading="lazy">
+                  </a>
+                  <figcaption>Apache Server Status</figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+          <article class="project-shell project-carousel-slide" data-project-name="AWS S3 Backup &amp; Recovery" aria-label="Project 2: AWS S3 Backup and Recovery">
+            <div class="project-header">
+              <div class="project-label"><span class="project-check" aria-hidden="true">✓</span> AWS storage project</div>
+              <span class="project-status">Completed · Hands-on project</span>
+            </div>
+            <div class="project-body">
+              <div class="project-copy">
+                <h3>AWS S3 Backup &amp; Recovery</h3>
+                <p>Built and tested an S3 backup workflow using AWS CLI, dedicated IAM permissions, and S3 Versioning to upload files and recover an earlier object version.</p>
+                <ul class="project-list">
+                  <li>Created the <strong>secure-cloud-backup-system24</strong> S3 bucket in <strong>ap-south-1</strong> and enabled bucket versioning.</li>
+                  <li>Configured a dedicated IAM user with scoped <strong>s3:PutObject</strong> access to the <strong>backups/</strong> prefix.</li>
+                  <li>Configured AWS CLI on Windows and verified the active identity before uploading a test backup.</li>
+                  <li>Updated and uploaded the same object again, then confirmed that S3 retained multiple versions.</li>
+                  <li>Downloaded an earlier object version through the S3 Console and inspected the recovered file.</li>
+                </ul>
+                <div class="tech-line">
+                  <strong>Technologies used</strong>
+                  <div>
+                    <span>Amazon S3</span>
+                    <span>IAM</span>
+                    <span>AWS CLI</span>
+                    <span>S3 Versioning</span>
+                    <span>Windows PowerShell</span>
+                  </div>
+                </div>
+                <div class="project-actions">
+                  <a class="button button-dark" href="https://github.com/pankaj0924/S3-Backup-Recovery" target="_blank" rel="noopener noreferrer">View GitHub repository <span aria-hidden="true">↗</span></a>
+                  <a class="button button-light" href="https://github.com/pankaj0924/S3-Backup-Recovery#readme" target="_blank" rel="noopener noreferrer">Read project details</a>
+                </div>
+              </div>
+              <div class="architecture" aria-label="S3 backup and recovery workflow">
+                <div class="architecture-head">
+                  <strong>Backup &amp; recovery workflow</strong>
+                  <span>HIGH-LEVEL VIEW</span>
+                </div>
+                <div class="arch-flow">
+                  <div class="arch-row">
+                    <div class="arch-node">
+                      <b>Windows workstation</b>
+                      <small>Test file · AWS CLI</small>
+                    </div>
+                    <div class="arch-arrow" aria-hidden="true">→</div>
+                    <div class="arch-node">
+                      <b>IAM user</b>
+                      <small>Scoped upload permission</small>
+                    </div>
+                  </div>
+                  <div class="arch-row">
+                    <div class="arch-node">
+                      <b>AWS CLI upload</b>
+                      <small>s3:PutObject operation</small>
+                    </div>
+                    <div class="arch-arrow" aria-hidden="true">→</div>
+                    <div class="arch-node">
+                      <b>Amazon S3</b>
+                      <small>Versioning enabled · backups/</small>
+                    </div>
+                  </div>
+                  <div class="arch-row">
+                    <div class="arch-node">
+                      <b>Updated object</b>
+                      <small>New object version</small>
+                    </div>
+                    <div class="arch-arrow" aria-hidden="true">→</div>
+                    <div class="arch-node">
+                      <b>Previous version</b>
+                      <small>Retained in S3</small>
+                    </div>
+                  </div>
+                  <div class="arch-row">
+                    <div class="arch-node">
+                      <b>S3 Console</b>
+                      <small>Select earlier version</small>
+                    </div>
+                    <div class="arch-arrow" aria-hidden="true">→</div>
+                    <div class="arch-node">
+                      <b>Recovery</b>
+                      <small>Download and inspect file</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="arch-config"><strong>Recovery validation:</strong> Re-uploaded an updated test object, confirmed version history, and recovered an earlier version.</div>
+              </div>
+            </div>
+          </article>
+              </div>
             </div>
           </div>
-          <!-- Project Screenshot Gallery -->
-<div class="project-gallery">
-
-    <div class="gallery-heading">
-        <h3>Implementation Gallery</h3>
-        <p>A closer look at the implementation.</p>
-    </div>
-
-    <div class="project-gallery-grid">
-<figure class="project-shot">
-    <a href="Cloudlab/Screenshot%202026-11-11%20091830.png" target="_blank" rel="noopener noreferrer">
-        <img
-            src="Cloudlab/Screenshot%202026-11-11%20091830.png"
-            alt="AWS EC2 instance"
-            loading="lazy">
-    </a>
-    <figcaption>EC2 Instance</figcaption>
-</figure>
-
-        <figure class="project-shot">
-    <a href="Cloudlab/Screenshot%202026-11-11%20123353.png" target="_blank" rel="noopener noreferrer">
-        <img
-            src="Cloudlab/Screenshot%202026-11-11%20123353.png"
-            alt="Cloud Support Lab website"
-            loading="lazy">
-    </a>
-    <figcaption>Live Website</figcaption>
-</figure>
-
-       <figure class="project-shot">
-    <a href="Cloudlab/Screenshot%202026-11-10%20202705.png" target="_blank" rel="noopener noreferrer">
-        <img
-            src="Cloudlab/Screenshot%202026-11-10%20202705.png"
-            alt="Apache server status"
-            loading="lazy">
-    </a>
-    <figcaption>Apache Server Status</figcaption>
-</figure>
-
-    </div>
-</div>
-          <!-- <p class="project-footnote"><strong>Project scope:</strong> The S3 work demonstrates storage integration through test-object operations, not an automated backup system.</p> -->
-        </article>
-      </div>
-    </section>
-
-    <section class="content-section experience-section" id="experience" aria-labelledby="experience-title">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">04 / Experience</div>
-          <h2 id="experience-title">Professional foundation.</h2>
-          <p class="section-intro">Technical support experience that complements my hands-on cloud learning.</p>
         </div>
-        <article class="experience-card">
-          <div>
-            <h3>Associate, Technical Support</h3>
-            <div class="experience-company">Tech Mahindra</div>
-            <p>Built experience in technical analysis, troubleshooting, SLA-driven issue resolution, and clear documentation. These foundations support my transition toward cloud infrastructure and operations roles.</p>
+      </section>
+      <section class="content-section experience-section" id="experience" aria-labelledby="experience-title">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">04 / Experience</div>
+            <h2 id="experience-title">Professional Experience</h2>
+            <p class="section-intro">Technical support experience in troubleshooting, incident resolution, and documentation.</p>
           </div>
-          <div class="experience-date">MAY 2025 — SEP 2026</div>
-        </article>
-      </div>
-    </section>
-
-    <section class="content-section resume-section" id="resume" aria-labelledby="resume-title">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">05 / Resume</div>
-          <h2 id="resume-title">A little more about my background.</h2>
-          <p class="section-intro">Download my résumé for a concise overview of my experience, technical skills, projects, and education.</p>
-        </div>
-        <article class="resume-card">
-          <div class="resume-card-main">
-            <div class="resume-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"/><path d="M14 3.5V8h4M9 12h6M9 15.5h6"/></svg>
-            </div>
+          <article class="experience-card">
             <div>
-              <h3>Pankaj Dhavale — Resume</h3>
-              <p>PDF document · Experience, AWS and technical skills, projects, and education.</p>
-              <div class="resume-meta">PDF · UPDATED NOVEMBER 2026</div>
+              <h3>Associate, Technical Support</h3>
+              <div class="experience-company">Tech Mahindra</div>
+              <p>Built experience in technical analysis, troubleshooting, SLA-driven issue resolution, and clear documentation. These foundations support my transition toward cloud infrastructure and operations roles.</p>
             </div>
-          </div>
-          <div class="resume-actions">
-            <a class="button button-dark" href="resume.pdf" download="Pankaj-Dhavale-Resume.pdf">Download PDF <span aria-hidden="true">↓</span></a>
-            <a class="button button-light" href="resume.pdf" target="_blank" rel="noopener noreferrer">View resume <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div class="container contact-inner">
-        <div class="contact-heading">
-          <div class="section-kicker">06 / Contact</div>
-          <h2 id="contact-title">Let’s build what’s next.</h2>
-          <p>I’m building toward Cloud Support Engineer and Junior Cloud Engineer opportunities. For professional opportunities, project discussions, or collaboration, feel free to reach out through any of the channels below.</p>
+            <div class="experience-date">MAY 2025 — SEP 2026</div>
+          </article>
         </div>
-        <div class="contact-grid" aria-label="Contact details">
-          <a class="contact-card" href="mailto:dhavalepankaj2002@gmail.com">
-            <span class="contact-card-label">Email</span>
-            <strong>dhavalepankaj2002@gmail.com</strong>
-            <small>Send me an email ↗</small>
-          </a>
-          <a class="contact-card" href="tel:+918856006994">
-            <span class="contact-card-label">Phone</span>
-            <strong>+91 8856006994</strong>
-            <small>Call or reach me by phone ↗</small>
-          </a>
-          <a class="contact-card" href="https://www.linkedin.com/in/pankaj-dhavale-25b726262" target="_blank" rel="noopener noreferrer">
-            <span class="contact-card-label">LinkedIn</span>
-            <strong>linkedin.com/in/pankaj-dhavale</strong>
-            <small>Connect professionally ↗</small>
-          </a>
-          <a class="contact-card" href="https://github.com/pankaj0924" target="_blank" rel="noopener noreferrer">
-            <span class="contact-card-label">GitHub</span>
-            <strong>github.com/pankaj0924</strong>
-            <small>Explore my projects ↗</small>
-          </a>
+      </section>
+      <section class="content-section resume-section" id="resume" aria-labelledby="resume-title">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">05 / Resume</div>
+            <h2 id="resume-title">Download My Resume</h2>
+            <p class="section-intro">A concise overview of my experience, technical skills, projects, and education.</p>
+          </div>
+          <article class="resume-card">
+            <div class="resume-card-main">
+              <div class="resume-icon" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"></path><path d="M14 3.5V8h4M9 12h6M9 15.5h6"></path></svg> </div>
+              <div>
+                <h3>Pankaj Dhavale — Resume</h3>
+                <p>PDF document · Experience, AWS and technical skills, projects, and education.</p>
+                <div class="resume-meta">PDF · UPDATED NOVEMBER 2026</div>
+              </div>
+            </div>
+            <div class="resume-actions">
+              <a class="button button-dark" href="resume.pdf" download="Pankaj-Dhavale-Resume.pdf">Download PDF <span aria-hidden="true">↓</span></a>
+              <a class="button button-light" href="resume.pdf" target="_blank" rel="noopener noreferrer">View resume <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
-        <div class="contact-location">Based in Pune, Maharashtra, India</div>
+      </section>
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="container contact-inner">
+          <div class="contact-heading">
+            <div class="section-kicker">06 / Contact</div>
+            <h2 id="contact-title">Let’s build what’s next.</h2>
+            <p>Open to Cloud Support and Junior Cloud Engineer opportunities. For professional discussions or collaboration, feel free to get in touch.</p>
+          </div>
+          <div class="contact-grid" aria-label="Contact details">
+            <a class="contact-card" href="mailto:dhavalepankaj2002@gmail.com"> <span class="contact-card-label">Email</span> <strong>dhavalepankaj2002@gmail.com</strong> <small>Send me an email ↗</small> </a>
+            <a class="contact-card" href="tel:+918856006994"> <span class="contact-card-label">Phone</span> <strong>+91 8856006994</strong> <small>Call or reach me by phone ↗</small> </a>
+            <a class="contact-card" href="https://www.linkedin.com/in/pankaj-dhavale-25b726262" target="_blank" rel="noopener noreferrer"> <span class="contact-card-label">LinkedIn</span> <strong>linkedin.com/in/pankaj-dhavale</strong> <small>Connect professionally ↗</small> </a>
+            <a class="contact-card" href="https://github.com/pankaj0924" target="_blank" rel="noopener noreferrer"> <span class="contact-card-label">GitHub</span> <strong>github.com/pankaj0924</strong> <small>Explore my projects ↗</small> </a>
+          </div>
+          <div class="contact-location">Based in Pune, Maharashtra, India</div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year">2026</span> Pankaj Dhavale · Designed with clarity and purpose.</span>
+        <a href="#home">Back to top ↑</a>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <span>© <span id="year">2026</span> Pankaj Dhavale · Designed with clarity and purpose.</span>
-      <a href="#home">Back to top ↑</a>
-    </div>
-  </footer>
-
-  <script>
-    const menuButton = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    menuButton.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', String(isOpen));
-      menuButton.textContent = isOpen ? 'Close' : 'Menu';
-    });
-
-    navLinks.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        menuButton.setAttribute('aria-expanded', 'false');
-        menuButton.textContent = 'Menu';
+    </footer>
+    <script>
+      const menuButton = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      menuButton.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.textContent = isOpen ? 'Close' : 'Menu';
       });
-    });
+      
+      navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          menuButton.setAttribute('aria-expanded', 'false');
+          menuButton.textContent = 'Menu';
+        });
+      });
+      
+      const projectCarousel = document.querySelector('.project-carousel');
+      if (projectCarousel) {
+        const projectTrack = projectCarousel.querySelector('.project-carousel-track');
+        const projectViewport = projectCarousel.querySelector('.project-carousel-viewport');
+        const projectSlides = Array.from(projectCarousel.querySelectorAll('.project-carousel-slide'));
+        const previousProjectButton = projectCarousel.querySelector('#project-prev');
+        const nextProjectButton = projectCarousel.querySelector('#project-next');
+        const projectStatus = projectCarousel.querySelector('#project-carousel-status');
+        let activeProjectIndex = 0;
+        let pointerStartX = 0;
+        let pointerStartY = 0;
+        let pointerActive = false;
+        let pointerDragging = false;
+        let suppressNextClick = false;
 
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
+        const showProject = (index) => {
+          activeProjectIndex = (index + projectSlides.length) % projectSlides.length;
+          projectTrack.style.transform = `translateX(-${activeProjectIndex * 100}%)`;
+
+          projectSlides.forEach((slide, slideIndex) => {
+            const isActive = slideIndex === activeProjectIndex;
+            slide.setAttribute('aria-hidden', String(!isActive));
+            slide.inert = !isActive;
+          });
+
+          const projectName = projectSlides[activeProjectIndex].dataset.projectName;
+          projectStatus.textContent = `${String(activeProjectIndex + 1).padStart(2, '0')} / ${String(projectSlides.length).padStart(2, '0')} · ${projectName}`;
+        };
+
+        const moveProject = (direction) => showProject(activeProjectIndex + direction);
+
+        previousProjectButton.addEventListener('click', () => moveProject(-1));
+        nextProjectButton.addEventListener('click', () => moveProject(1));
+
+        // Support laptop touchpads: two-finger horizontal scrolling moves between projects.
+        // Ordinary vertical page scrolling is left untouched.
+        let trackpadSwipeDeltaX = 0;
+        let trackpadSwipeResetTimer = null;
+        let trackpadSwipeTriggered = false;
+
+        projectViewport.addEventListener('wheel', (event) => {
+          if (event.ctrlKey) return; // Preserve trackpad pinch-to-zoom.
+
+          const horizontalDelta = event.shiftKey && Math.abs(event.deltaY) > Math.abs(event.deltaX)
+            ? event.deltaY
+            : event.deltaX;
+          const isHorizontalGesture = event.shiftKey || Math.abs(event.deltaX) > Math.abs(event.deltaY);
+
+          if (!isHorizontalGesture || Math.abs(horizontalDelta) < 1) return;
+
+          // Prevent the browser from horizontally scrolling the page while the carousel handles the gesture.
+          event.preventDefault();
+
+          if (!trackpadSwipeTriggered) {
+            trackpadSwipeDeltaX += horizontalDelta;
+            if (Math.abs(trackpadSwipeDeltaX) >= 55) {
+              moveProject(trackpadSwipeDeltaX < 0 ? 1 : -1);
+              trackpadSwipeDeltaX = 0;
+              trackpadSwipeTriggered = true;
+            }
+          }
+
+          // Treat a burst of wheel events as one gesture, including trackpad momentum.
+          window.clearTimeout(trackpadSwipeResetTimer);
+          trackpadSwipeResetTimer = window.setTimeout(() => {
+            trackpadSwipeDeltaX = 0;
+            trackpadSwipeTriggered = false;
+          }, 260);
+        }, { passive: false });
+
+        projectViewport.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            moveProject(-1);
+          } else if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            moveProject(1);
+          }
+        });
+
+        // Drag with a mouse or stylus; Pointer Events also support touch swipes.
+        projectViewport.addEventListener('pointerdown', (event) => {
+          if (event.pointerType === 'mouse' && event.button !== 0) return;
+          pointerActive = true;
+          pointerDragging = false;
+          pointerStartX = event.clientX;
+          pointerStartY = event.clientY;
+          projectViewport.setPointerCapture(event.pointerId);
+        });
+
+        projectViewport.addEventListener('pointermove', (event) => {
+          if (!pointerActive) return;
+
+          const deltaX = event.clientX - pointerStartX;
+          const deltaY = event.clientY - pointerStartY;
+          if (!pointerDragging && Math.abs(deltaX) > 7 && Math.abs(deltaX) > Math.abs(deltaY)) {
+            pointerDragging = true;
+            projectViewport.classList.add('is-dragging');
+          }
+
+          if (pointerDragging) {
+            event.preventDefault();
+            projectTrack.style.transform = `translateX(calc(-${activeProjectIndex * 100}% + ${deltaX}px))`;
+          }
+        });
+
+        const finishProjectDrag = (event) => {
+          if (!pointerActive) return;
+          const swipeDistance = event.clientX - pointerStartX;
+          const wasDragging = pointerDragging;
+          pointerActive = false;
+          pointerDragging = false;
+          projectViewport.classList.remove('is-dragging');
+
+          if (wasDragging) {
+            suppressNextClick = true;
+            window.setTimeout(() => { suppressNextClick = false; }, 400);
+            if (Math.abs(swipeDistance) > 55) {
+              moveProject(swipeDistance < 0 ? 1 : -1);
+            } else {
+              showProject(activeProjectIndex);
+            }
+          }
+        };
+
+        projectViewport.addEventListener('pointerup', finishProjectDrag);
+        projectViewport.addEventListener('pointercancel', (event) => {
+          if (!pointerActive) return;
+          pointerActive = false;
+          pointerDragging = false;
+          projectViewport.classList.remove('is-dragging');
+          showProject(activeProjectIndex);
+        });
+
+        projectViewport.addEventListener('click', (event) => {
+          if (suppressNextClick) {
+            event.preventDefault();
+            event.stopPropagation();
+            suppressNextClick = false;
+          }
+        }, true);
+
+        showProject(0);
+      }
+
+      // Reveal key sections and cards as they enter the viewport.
+      const revealTargets = document.querySelectorAll(
+        '.hero-copy, .hero-panel, .section-head, .about-grid > *, .skill-card, ' +
+        '.project-carousel-controls, .project-carousel-slide, .experience-card, ' +
+        '.resume-card, .contact-heading, .contact-card, .contact-location'
+      );
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: '0px 0px -28px 0px'
+        });
+
+        let previousParent = null;
+        let siblingIndex = 0;
+        revealTargets.forEach((element) => {
+          if (element.parentElement !== previousParent) {
+            previousParent = element.parentElement;
+            siblingIndex = 0;
+          }
+          element.classList.add('scroll-reveal');
+          element.style.setProperty('--reveal-delay', `${Math.min(siblingIndex, 5) * 55}ms`);
+          siblingIndex += 1;
+          revealObserver.observe(element);
+        });
+      }
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  
+    <script>
+      (() => {
+        const header = document.querySelector('.topbar');
+        if (!header) return;
+
+        const updateHeaderSurface = () => {
+          header.classList.toggle('is-scrolled', window.scrollY > 24);
+        };
+
+        updateHeaderSurface();
+        window.addEventListener('scroll', updateHeaderSurface, { passive: true });
+      })();
+    </script>
+
+  </body>
 </html>
