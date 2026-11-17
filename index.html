@@ -1414,89 +1414,48 @@
               </div>
             </div>
           </article>
-          <article class="project-shell project-carousel-slide" data-project-name="AWS S3 Backup &amp; Recovery" aria-label="Project 2: AWS S3 Backup and Recovery">
+          <article class="project-shell project-carousel-slide" data-project-name="AWS VPC Networking Lab" aria-label="Project 2: AWS VPC Networking Lab">
             <div class="project-header">
-              <div class="project-label"><span class="project-check" aria-hidden="true">✓</span> AWS storage project</div>
+              <div class="project-label"><span class="project-check" aria-hidden="true">✓</span> AWS networking project</div>
               <span class="project-status">Completed · Hands-on project</span>
             </div>
             <div class="project-body">
               <div class="project-copy">
-                <h3>AWS S3 Backup &amp; Recovery</h3>
-                <p>Built and tested an S3 backup workflow using AWS CLI, dedicated IAM permissions, and S3 Versioning to upload files and recover an earlier object version.</p>
+                <h3>AWS VPC Networking Lab</h3>
+                <p>Built a custom VPC network in AWS Mumbai with public and private subnets, routing, network security, an EC2-hosted Apache website, and an S3 Gateway Endpoint.</p>
                 <ul class="project-list">
-                  <li>Created the <strong>secure-cloud-backup-system24</strong> S3 bucket in <strong>ap-south-1</strong> and enabled bucket versioning.</li>
-                  <li>Configured a dedicated IAM user with scoped <strong>s3:PutObject</strong> access to the <strong>backups/</strong> prefix.</li>
-                  <li>Configured AWS CLI on Windows and verified the active identity before uploading a test backup.</li>
-                  <li>Updated and uploaded the same object again, then confirmed that S3 retained multiple versions.</li>
-                  <li>Downloaded an earlier object version through the S3 Console and inspected the recovered file.</li>
+                  <li>Configured a VPC (<strong>10.0.0.0/16</strong>) with two public and two private subnets across two Availability Zones.</li>
+                  <li>Associated the public route table with an Internet Gateway for public web access.</li>
+                  <li>Configured private route tables and an <strong>Amazon S3 Gateway Endpoint</strong> without a NAT Gateway.</li>
+                  <li>Deployed an <strong>Amazon Linux 2023 t3.micro</strong> instance running Apache in a public subnet.</li>
+                  <li>Configured Security Group rules for HTTP (80) and restricted SSH (22), and reviewed subnet Network ACLs.</li>
                 </ul>
-                <div class="tech-line">
-                  <strong>Technologies used</strong>
-                  <div>
-                    <span>Amazon S3</span>
-                    <span>IAM</span>
-                    <span>AWS CLI</span>
-                    <span>S3 Versioning</span>
-                    <span>Windows PowerShell</span>
-                  </div>
-                </div>
+                <div class="tech-line"><strong>Technologies used</strong><div>
+                  <span>Amazon VPC</span><span>EC2</span><span>Subnets</span><span>Route Tables</span><span>Internet Gateway</span><span>Security Groups</span><span>Network ACL</span><span>S3 Gateway Endpoint</span><span>Apache</span>
+                </div></div>
                 <div class="project-actions">
-                  <a class="button button-dark" href="https://github.com/pankaj0924/S3-Backup-Recovery" target="_blank" rel="noopener noreferrer">View GitHub repository <span aria-hidden="true">↗</span></a>
-                  <a class="button button-light" href="https://github.com/pankaj0924/S3-Backup-Recovery#readme" target="_blank" rel="noopener noreferrer">Read project details</a>
+                  <a class="button button-dark" href="https://github.com/pankaj0924/vpc-networking-lab" target="_blank" rel="noopener noreferrer">View GitHub repository <span aria-hidden="true">↗</span></a>
+                  <a class="button button-light" href="https://github.com/pankaj0924/vpc-networking-lab#readme" target="_blank" rel="noopener noreferrer">Read project details</a>
                 </div>
               </div>
-              <div class="architecture" aria-label="S3 backup and recovery workflow">
-                <div class="architecture-head">
-                  <strong>Backup &amp; recovery workflow</strong>
-                  <span>HIGH-LEVEL VIEW</span>
-                </div>
+              <div class="architecture" aria-label="VPC networking architecture overview">
+                <div class="architecture-head"><strong>VPC network architecture</strong><span>HIGH-LEVEL VIEW</span></div>
                 <div class="arch-flow">
-                  <div class="arch-row">
-                    <div class="arch-node">
-                      <b>Windows workstation</b>
-                      <small>Test file · AWS CLI</small>
-                    </div>
-                    <div class="arch-arrow" aria-hidden="true">→</div>
-                    <div class="arch-node">
-                      <b>IAM user</b>
-                      <small>Scoped upload permission</small>
-                    </div>
-                  </div>
-                  <div class="arch-row">
-                    <div class="arch-node">
-                      <b>AWS CLI upload</b>
-                      <small>s3:PutObject operation</small>
-                    </div>
-                    <div class="arch-arrow" aria-hidden="true">→</div>
-                    <div class="arch-node">
-                      <b>Amazon S3</b>
-                      <small>Versioning enabled · backups/</small>
-                    </div>
-                  </div>
-                  <div class="arch-row">
-                    <div class="arch-node">
-                      <b>Updated object</b>
-                      <small>New object version</small>
-                    </div>
-                    <div class="arch-arrow" aria-hidden="true">→</div>
-                    <div class="arch-node">
-                      <b>Previous version</b>
-                      <small>Retained in S3</small>
-                    </div>
-                  </div>
-                  <div class="arch-row">
-                    <div class="arch-node">
-                      <b>S3 Console</b>
-                      <small>Select earlier version</small>
-                    </div>
-                    <div class="arch-arrow" aria-hidden="true">→</div>
-                    <div class="arch-node">
-                      <b>Recovery</b>
-                      <small>Download and inspect file</small>
-                    </div>
-                  </div>
+                  <div class="arch-row"><div class="arch-node"><b>Internet users</b><small>HTTP request · TCP 80</small></div><div class="arch-arrow" aria-hidden="true">→</div><div class="arch-node"><b>Internet Gateway</b><small>Public route · 0.0.0.0/0</small></div></div>
+                  <div class="arch-row"><div class="arch-node"><b>Public subnet</b><small>10.0.0.0/20 · Security Group</small></div><div class="arch-arrow" aria-hidden="true">→</div><div class="arch-node"><b>EC2 + Apache</b><small>Amazon Linux 2023 · Website</small></div></div>
+                  <div class="arch-row"><div class="arch-node"><b>Private subnets</b><small>10.0.128.0/20 · 10.0.144.0/20</small></div><div class="arch-arrow" aria-hidden="true">→</div><div class="arch-node"><b>S3 Gateway Endpoint</b><small>Private route to Amazon S3</small></div></div>
+                  <div class="arch-row"><div class="arch-node"><b>Private route tables</b><small>S3 prefix-list route</small></div><div class="arch-arrow" aria-hidden="true">→</div><div class="arch-node"><b>Amazon S3</b><small>Private connectivity path</small></div></div>
                 </div>
-                <div class="arch-config"><strong>Recovery validation:</strong> Re-uploaded an updated test object, confirmed version history, and recovered an earlier version.</div>
+                <div class="arch-config"><strong>VPC:</strong> <code>10.0.0.0/16</code> · <strong>Region:</strong> ap-south-1 (Mumbai) · <strong>NAT Gateway:</strong> Not configured</div>
+                <p class="arch-note">The endpoint is associated with both private route tables. Access to S3 remains subject to IAM and endpoint/bucket policies; no private EC2 workload is claimed as tested.</p>
+              </div>
+            </div>
+            <div class="project-gallery">
+              <div class="gallery-heading"><h3>Implementation Gallery</h3><p>Three key screenshots from the VPC networking lab.</p></div>
+              <div class="project-gallery-grid">
+                <figure class="project-shot"><a href="https://raw.githubusercontent.com/pankaj0924/vpc-networking-lab/main/images/vpc-overview.png" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/pankaj0924/vpc-networking-lab/main/images/vpc-overview.png" alt="AWS VPC Overview" loading="lazy"></a><figcaption>AWS VPC Overview</figcaption></figure>
+                <figure class="project-shot"><a href="https://raw.githubusercontent.com/pankaj0924/vpc-networking-lab/main/images/subnets.png" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/pankaj0924/vpc-networking-lab/main/images/subnets.png" alt="Public and Private Subnets" loading="lazy"></a><figcaption>Public and Private Subnets</figcaption></figure>
+                <figure class="project-shot"><a href="https://raw.githubusercontent.com/pankaj0924/vpc-networking-lab/main/images/s3-endpoint.png" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/pankaj0924/vpc-networking-lab/main/images/s3-endpoint.png" alt="S3 Gateway Endpoint" loading="lazy"></a><figcaption>S3 Gateway Endpoint</figcaption></figure>
               </div>
             </div>
           </article>
